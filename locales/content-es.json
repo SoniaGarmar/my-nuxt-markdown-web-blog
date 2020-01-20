@@ -1,0 +1,12 @@
+{
+  "header":{
+   "title":"Hola, Soy Sonia",
+   "description" : "Soy una desarrolladora web full-stack de Barcelona"
+  },
+  "footer":{
+    "note": "Creado con Vuejs y Nuxtjs"
+  },
+  "navbar":{
+    "home": "inicio"
+  }
+}

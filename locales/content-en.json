@@ -1,0 +1,12 @@
+{
+  "header":{
+   "title":"Hi, I'm Sonia",
+   "description" : "I'm a full-stack web developper based in Barcelona"
+  },
+  "footer":{
+    "note": "Created with Vuejs and Nuxtjs"
+  },
+  "navbar":{
+    "home": "home"
+  }
+}

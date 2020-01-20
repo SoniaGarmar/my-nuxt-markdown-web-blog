@@ -1,4 +1,5 @@
 const path = require('path');
+const { i18nOptions } = require('./locales/nuxt-i18n-config');
 
 export default {
   mode: 'universal',
@@ -63,7 +64,9 @@ export default {
            icons: ['fab']
         }
       ]
-    }]
+    }],
+
+    ['nuxt-i18n', i18nOptions]
 
   ],
   /*

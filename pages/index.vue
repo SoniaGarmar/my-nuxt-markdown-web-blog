@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
-        sonia-web
+       {{ $t('header.title') }}
       </h1>
       <h2 class="subtitle">
         My splendiferous Nuxt.js project
