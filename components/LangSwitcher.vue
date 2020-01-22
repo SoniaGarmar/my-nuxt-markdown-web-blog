@@ -9,21 +9,36 @@
 </template>
 
 <script>
-
+import { eventBus } from '../plugins/eventbus';
 
 export default {
   data () {
     return {
-
+        slugTrans:''
     }
   },
 
+
+  created( ) {
+        this.$eventBus.$on("inPost", (slugTrans) => {
+          console.log("I have been notified that the slug changed: " + slugTrans);
+          this.slugTrans = slugTrans
+        });
+  },
+
+
   methods: {
     changeLanguage(lang) {
-      console.log("CURRRENT LANG: " + this.$i18n.locale)
-      this.$router.push(this.switchLocalePath(lang));
+      if(this.$route.path.includes('/blog/')){
+          // if in blog, change the locale manually and the navigate to the new route
+        this.$i18n.locale = lang;
+        this.$router.push(this.localePath({ name: 'blog-slug',  params: { slug: this.slugTrans } }));
+      } else{
+       this.$router.push(this.switchLocalePath(lang));
+      }
     }
   }
+
 };
 </script>
 

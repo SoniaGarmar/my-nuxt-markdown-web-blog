@@ -7,9 +7,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
+             <nuxt-link :to="localePath('index')" class="nav-link">
+                  {{ $t('navbar.home') }}
+              </nuxt-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About Me</a>
@@ -27,9 +27,9 @@
 
         <ul class="navbar-nav ml-auto nav-flex-icons">
           <li class="nav-item">
-            <a class="nav-link waves-effect waves-light">
-            Blog
-            </a>
+             <nuxt-link :to="localePath('blog')" class="nav-link">
+                  Blog
+              </nuxt-link>
           </li>
 
           <li class="nav-item">

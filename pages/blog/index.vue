@@ -3,19 +3,29 @@
     <div>
         <h1>Posts</h1>
         <ul>
-              <li v-for="post in posts" :key="post.attributes.slug">
-                   <nuxt-link :to="`/blog/${post.attributes.slug}`">
-                       {{post.attributes.title}}</nuxt-link>
-             </li>
+            <li v-for="post in posts" :key="post.attributes.slug">
+              <nuxt-link
+                :to="localePath({ name: 'blog-slug', params: { slug: post.attributes.slug } })">
+                {{ post.attributes.title }}
+              </nuxt-link>
+            </li>
         </ul>
     </div>
 </template>
 <script>
   export default {
-    async asyncData() {
+    async asyncData({app}) {
 
-      let postsContent = require.context("~/content/blog/EN/", true, /\.md$/);
-      console.log("****postsContent: " + postsContent);
+       let postsContent;
+       switch (app.i18n.locale) {
+         case 'en':
+           postsContent = require.context("~/content/blog/EN/", true, /\.md$/)
+           break;
+          case 'es':
+            postsContent = require.context("~/content/blog/ES/", true, /\.md$/)
+           break;
+       }
+
       // require.context does not returns tehe content of the
       // modules(the md files) directly.
       //It returns a function to which we can require.

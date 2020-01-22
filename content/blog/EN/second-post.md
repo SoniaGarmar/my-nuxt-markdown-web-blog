@@ -3,6 +3,7 @@ name: 'second post'
 title: My second post in Markdown
 date: Jan 17 2020
 slug: 'second-post'
+slugTrans: 'segundo-post'
 description:  This is my second markdown post
 ---
 <!---
@@ -36,4 +37,4 @@ Or regular HTML
 <img src="https://picsum.photos/500"/>
 
 
-You can lear more about [Markdown](https://www.markdownguide.org/basic-syntax/) 
+You can learn more about [Markdown](https://www.markdownguide.org/basic-syntax/) 

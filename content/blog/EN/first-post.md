@@ -3,6 +3,7 @@ name: 'first post'
 title: My first post in Markdown
 date: Jan 17 2020
 slug: 'first-post'
+slugTrans: 'primer-post'
 description:  This is my first markdown post
 ---
 <!---
@@ -66,7 +67,7 @@ console.log(text);
 
 
 
-You can lear more about [Markdown](https://daringfireball.net/projects/markdown/) 
+You can learn more about [Markdown](https://daringfireball.net/projects/markdown/) 
 
 
 
