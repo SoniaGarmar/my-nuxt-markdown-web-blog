@@ -7,6 +7,10 @@
     "note": "Created with Vuejs and Nuxtjs"
   },
   "navbar":{
-    "home": "home"
+    "home": "Home",
+    "me": "Me",
+    "services": "What I do",
+    "portfolio": "What I have done",
+    "contact": "Drop me a line"
   }
 }

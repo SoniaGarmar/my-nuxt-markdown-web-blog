@@ -1,6 +1,6 @@
 <template>
     <div class="lang-switcher" >
-      <button class="btn btn-default"
+      <button class="btn btn-lang"
               v-bind:class="{'selected-lang': lang.code === $i18n.locale }"
               v-for="(lang, i) in $i18n.locales" :key="`Lang${i}`"
               @click="changeLanguage(lang.code)">{{lang.name}}
@@ -43,13 +43,29 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import '../assets/styles/main.scss';
+
   .lang-switcher {
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
 
-  .selected-lang {
-     color: red;
+  .btn-lang {
+      font-family: 'IBM Plex Mono', monospace;
+      display: inline-block;
+      border-radius: 0px;
+      text-decoration: none;
+      margin-top:5px;
+      padding: 0 5px;
+      color:$grey-med;
+
+      font-size: 14px;
+      text-transform: none;
+      letter-spacing: 2px;
+  }
+
+   .selected-lang {
+     color:$base-color;
   }
 </style>

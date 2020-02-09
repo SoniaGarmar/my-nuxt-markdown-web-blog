@@ -7,6 +7,10 @@
     "note": "Creado con Vuejs y Nuxtjs"
   },
   "navbar":{
-    "home": "inicio"
+    "home": "Inicio",
+    "me": "Yo",
+    "services": "Lo que hago",
+    "portfolio": "Cosas que he hecho",
+    "contact": "¿Quieres que hablemos?"
   }
 }

@@ -66,10 +66,13 @@ export default {
 </script>
 
 <style lang = "scss">
-  @import '../assets/styles/main.scss';
+ @import '../assets/styles/main.scss';
 
 #header{
-   background-color: $black;
+    background-color: $black;
+    height: 100vh;
+    padding-top: 80px;
+
    & .inner-wrapper {
      padding: 0 15%;
      & .header-msg {
@@ -106,8 +109,6 @@ export default {
       }
    }
    }
-
-
 }
 
 
