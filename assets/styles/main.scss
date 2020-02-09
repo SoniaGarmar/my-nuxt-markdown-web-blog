@@ -3,9 +3,9 @@
 @import '_variables';
 
 
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+body, html {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -22,31 +22,29 @@ html {
   margin: 0;
 }
 
-.button--green {
+
+.btn {
+  margin-top: 40px;
+  font-family: 'IBM Plex Mono', monospace;
   display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
+  border-radius: 0px;
   text-decoration: none;
-  padding: 10px 30px;
+  padding: 20px 40px;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+
+.button--default {
+  border: 1px solid $base-color;
+  background-color: $base-color;
+  color: $white;
+  &:hover{
+
+    color: $base-color;
+    background-color: transparent;
+  }
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
