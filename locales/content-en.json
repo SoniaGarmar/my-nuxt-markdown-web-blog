@@ -1,8 +1,16 @@
 {
   "header":{
-   "title":"Hi, I'm Sonia",
-   "description" : "I'm a full-stack web developper based in Barcelona"
+   "greeting-hello":"Hi, I'm Sonia",
+   "greeting-do" : " I code. <br> I design. <br> I solve problems. <br>",
+   "message":[
+              "I collaborate with companies and teams to create first class web and mobile apps that add value to their business.",
+              "<br> <br> If what is already in the market doesn't fit your needs, I'll create it for your.  <br>  <br>",
+              "<span class='underline'> You know what you need, I know how to build it. </span>"
+            ],
+
+    "button": "Let's work together"
   },
+
   "footer":{
     "note": "Created with Vuejs and Nuxtjs"
   },
@@ -14,3 +22,4 @@
     "contact": "Drop me a line"
   }
 }
+

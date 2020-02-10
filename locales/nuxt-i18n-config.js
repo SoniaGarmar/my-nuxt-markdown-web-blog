@@ -19,7 +19,7 @@ const i18nOptions = {
   seo: false,
   langDir: '/locales/',
   defaultLocale: 'en',
-  parsePages: false
+  parsePages: false,
 }
 
 module.exports = {

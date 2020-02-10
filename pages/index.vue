@@ -1,58 +1,59 @@
 <template>
-  <div class="container-fuid waves" id="header" >
-    <div class="d-flex align-items-center justify-content-center h-100 inner-wrapper">
-      <!-- to give it another width that the default 200px use
-           <blob :style="{ width: '100px' }"/>  -->
-        <div class="header-msg">
-           <p class="greeting">
-              <blob class="blob" />
-              Hi, I'm Sonia. <br>
-              <span class="smaller">
-                I code. <br>
-                I design. <br>
-                I solve problems. <br>
-              </span>
-            </p>
+  <div>
+    <!--HEADER-->
+    <div class="container-fuid waves" id="header" >
+      <div class="d-flex align-items-center justify-content-center h-100 inner-wrapper">
+        <!-- to give it another width that the default 200px use
+            <blob :style="{ width: '100px' }"/>  -->
+          <div class="header-msg">
+            <p class="greeting">
+                <blob class="blob" />
+                {{ $t('header.greeting-hello') }} <br>
+                <span class="smaller" v-html="$t('header.greeting-do')">
+                </span>
+              </p>
 
-            <p class="message">
-              I collaborate with companies and teams to create first class web and mobile apps
-              that add value to their business.
-              <br> <br>
-              If what is already in the market doesn't fit your needs, I'll create it for your.
-              <br>  <br>
-              <span class="underline"> You know what you need, I know how to build it. </span>
-            </p>
+                <p class="message" >
+                  <span v-html="$t('header.message[0]')"> </span>
+                  <span v-html="$t('header.message[1]')"> </span>
+                  <span v-html="$t('header.message[2]')"> </span>
+              </p>
 
-            <div class="d-flex justify-content-center">
-                <button type="button" class="btn button--default">Let's work together</button>
-            </div>
-        </div>
+              <div class="d-flex justify-content-center">
+                  <button type="button" class="btn button--default"> {{ $t('header.button') }}</button>
+              </div>
+          </div>
+      </div>
+
+      <svg class="svg-waves"
+      viewBox="0 24 150 28 "
+      preserveAspectRatio="none">
+      <defs>
+      <path id="wave"
+      d="M-160 44c30 0
+        58-18 88-18s
+        58 18 88 18
+        58-18 88-18
+        58 18 88 18
+        v44h-352z" />
+        </defs>
+          <g class="wave-one">
+              <use xlink:href="#wave" x="50" y="0" fill="#ff4265"/>
+          </g>
+
+          <g class="wave-two">
+                <use xlink:href="#wave" x="50" y="4" fill="#ecf0f1"/>
+          </g>
+      </svg>
+
+
+
     </div>
 
-    <svg class="svg-waves"
-    viewBox="0 24 150 28 "
-    preserveAspectRatio="none">
-    <defs>
-    <path id="wave"
-    d="M-160 44c30 0
-      58-18 88-18s
-      58 18 88 18
-      58-18 88-18
-      58 18 88 18
-      v44h-352z" />
-      </defs>
-        <g class="wave-one">
-            <use xlink:href="#wave" x="50" y="0" fill="#ff4265"/>
-        </g>
-
-        <g class="wave-two">
-              <use xlink:href="#wave" x="50" y="4" fill="#ecf0f1"/>
-        </g>
-    </svg>
-
-
-
   </div>
+
+
+
 </template>
 
 <script>

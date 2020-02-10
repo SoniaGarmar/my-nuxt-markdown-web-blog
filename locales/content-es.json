@@ -1,8 +1,12 @@
 {
   "header":{
-   "title":"Hola, Soy Sonia",
-   "description" : "Soy una desarrolladora web full-stack de Barcelona"
-  },
+    "greeting-hello":"Hola, soy Sonia",
+    "greeting-do" : "Programo. <br> Diseño. <br> Resuelvo problemas. <br>",
+    "message":["Colaboro con empresa y equipos para crear aplicaciones web y móvil que añader valor a tu negocio.",
+               "<br> <br> Si las soluciones que hay en el mercado no cubren tus necesidades, yo puedo una que las cubra.  <br>  <br>",
+               "<span class='underline'> Tú sabes lo que necesitas. Yo sé como crearlo </span>"],
+     "button": "Vamos a trabajar juntos"
+    },
   "footer":{
     "note": "Creado con Vuejs y Nuxtjs"
   },
