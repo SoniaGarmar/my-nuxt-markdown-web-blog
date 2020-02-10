@@ -65,7 +65,7 @@ export default {
 }
 </script>
 
-<style lang = "scss">
+<style scoped lang = "scss">
  @import '../assets/styles/main.scss';
 
 #header{
@@ -170,5 +170,77 @@ export default {
     transform: translate(85px, 0%);
   }
 }
+
+/* MEDIA QUERIES */
+@media (max-width: 500px) {
+  #header{
+    & .inner-wrapper {
+      padding: 0 10px;
+      & .header-msg {
+          margin-bottom: 100px;
+         & .greeting{
+          font-size: 2.1rem;
+          line-height: 2.1rem;
+
+          .smaller {
+            font-size: 1.9rem;
+            line-height: 1.9rem;
+
+          }
+         }
+
+        & .message {
+          font-size: 1.4rem;
+          line-height: 1.5rem;
+          margin-top: 30px;
+        }
+
+        & .blob {
+            top: -35px;
+            left: -33px;
+            width: 150px;
+        }
+      }
+    }
+  }
+
+  .waves{
+      height: auto;
+  }
+}
+
+
+@media (max-width: 991.98px) {
+  #header{
+    height: auto;
+    & .inner-wrapper {
+      padding: 25px 10%;
+        & .header-msg {
+
+          & .greeting{
+            font-size: 3.5rem;
+            line-height: 3.5rem;
+
+            .smaller {
+              font-size: 3rem;
+              line-height: 3rem;
+            }
+          }
+
+
+        & .blob {
+           left: -55px;
+           top: -30px;
+        }
+      }
+    }
+  }
+  .waves{
+      height: auto;
+  }
+
+}
+
+
 
 </style>

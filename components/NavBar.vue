@@ -168,21 +168,41 @@
   }
 
 
-  // MEDIA QUERIES //
+/* MEDIA QUERIES */
 
+@media (max-width: 500px) {
+ .navbar{
+     padding:0!important;
+     font-size: 20px;
+ }
+}
  @media (max-width: 991.98px) {
   .navbar{
-    padding:0!important;
-
-
+     padding:0!important;
+     font-size: 30px;
      .navbar-collapse{
        height: 100vh;
        .main-items, .secondary-items{
           text-align: center;
        }
-     }
 
+       .main-items{
+          &::after {
+            content: " . ";
+            color: $white;
+
+        }
+        .nav-item:not(:last-child){
+            &::after {
+                  content: "";
+                }
+        }
+      }
+
+     }
   }
+
+
  }
 
 
