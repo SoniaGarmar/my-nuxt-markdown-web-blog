@@ -2,7 +2,7 @@
   <div>
     <!--HEADER-->
     <div class="container-fuid waves" id="header" >
-      <div class="d-flex align-items-center justify-content-center h-100 inner-wrapper">
+      <div class="d-flex align-items-center justify-content-center  inner-wrapper">
         <!-- to give it another width that the default 200px use
             <blob :style="{ width: '100px' }"/>  -->
           <div class="header-msg">
@@ -19,7 +19,7 @@
                   <span v-html="$t('header.message[2]')"> </span>
               </p>
 
-              <div class="d-flex justify-content-center">
+              <div class="d-flex justify-content-center bottom-box">
                   <button type="button" class="btn button--default"> {{ $t('header.button') }}</button>
               </div>
           </div>
@@ -38,16 +38,65 @@
         v44h-352z" />
         </defs>
           <g class="wave-one">
-              <use xlink:href="#wave" x="50" y="0" fill="#ff4265"/>
+              <use xlink:href="#wave" x="50" y="0" fill="#ff4265" />
           </g>
 
           <g class="wave-two">
-                <use xlink:href="#wave" x="50" y="4" fill="#ecf0f1"/>
+                <use xlink:href="#wave" x="50" y="4" fill="#fff"/>
           </g>
       </svg>
 
 
 
+    </div>
+
+    <!--ME-->
+    <div class="container-fuid wrap " id="me" >
+      <div class="row">
+
+        <div class="col-lg-7 col-md-6 me-text">
+           <h2 >
+                <blob class="blob" />
+                ME
+            </h2>
+
+                <p v-html="$t('me[0]')"> </p>
+                <p v-html="$t('me[1]')"> </p>
+                <p>
+                    <span v-html="$t('me[2]')"></span>
+                    <span v-html="$t('me[3]')"></span>
+                </p>
+                <p>
+                    <span v-html="$t('me[4]')"></span>
+                    <span v-html="$t('me[5]')"></span>
+                </p>
+
+                <p>
+                    <span v-html="$t('me[6]')"></span>
+                    <span v-html="$t('me[7]')"></span>
+                    <span v-html="$t('me[8]')"></span>
+                </p>
+                <p class="image-p">
+                    <span v-html="$t('me[9]')"></span>
+                    <span v-html="$t('me[10]')"></span>
+                </p>
+                <p v-html="$t('me[11]')" class="image-p"> </p>
+                <p class="image-p">
+                    <span v-html="$t('me[12]')"></span>
+                    <span v-html="$t('me[13]')"></span>
+                    <span v-html="$t('me[14]')"></span>
+
+                </p>
+
+                   <img src="~/assets/images/sonia.png" class="me-image  d-lg-none">
+        </div>
+
+          <!-- <div class="col-lg-6  ">
+            <img src="~/assets/images/sonia.png" class="img-responsive">
+          </div> -->
+
+
+      </div>
     </div>
 
   </div>
@@ -71,58 +120,64 @@ export default {
 
 #header{
     background-color: $black;
-    height: 100vh;
-    padding-top: 80px;
+    min-height: 100vh;
+    padding-top: 180px;
 
-   & .inner-wrapper {
-     padding: 0 15%;
-     & .header-msg {
-      margin-bottom: 70px;
-      font-family: 'IBM Plex Mono', monospace;
-      color: $white;
-       & .greeting{
-        position: relative;
-        font-size: 4rem;
-        line-height: 4rem;
-        z-index: 5;
-        .smaller {
-          font-size: 3rem;
-          line-height: 3rem;
-        }
-        .special {
-          color: $base-color;
-        }
-      }
-
-      & .message {
+    & .inner-wrapper {
+      padding: 0 10%;
+       min-height: 100%;
+      & .header-msg {
+        margin-bottom: 4;
         font-family: 'IBM Plex Mono', monospace;
         color: $white;
-        font-size: 2rem;
-        line-height: 2.2rem;
-        margin-top: 50px;
-      }
+        & .greeting{
+          position: relative;
+          font-size: 3.9rem;
+          line-height: 3.9rem;
+          z-index: 5;
+          .smaller {
+            font-size: 2.9rem;
+            line-height: 2.9rem;
+          }
+          .special {
+            color: $base-color;
+          }
+        }
 
-       & .blob {
-        position: absolute;
-        top: -25px;
-        z-index: -1;
-        left: -95px;
+        & .message {
+          font-family: 'IBM Plex Mono', monospace;
+          color: $white;
+          font-size: 2rem;
+          line-height: 2.2rem;
+          margin-top: 50px;
+        }
+
+        & .blob {
+          position: absolute;
+          top: -15px;
+          z-index: -1;
+          left: -95px;
+        }
       }
-   }
+      & .bottom-box{
+        margin-bottom: 80px;
+      }
    }
 }
 
 
-.underline{
-  text-decoration: underline;
+
+/* because we are using this class in a v-html attribute, where the scoped styles are not rendered */
+ /* /deep/ .underline{
+    text-decoration: underline;
    text-decoration-color: $base-color;
-}
+} MOVED TO ANOT SCOPED STYLE*/
 
 .waves{
   display:block;
   position: relative;
   width: 100%;
-  height: calc(100vh - 100px);
+   height: auto;
   background: $black;
   & > .svg-waves{
   display: block;
@@ -172,41 +227,56 @@ export default {
   }
 }
 
-/* MEDIA QUERIES */
-@media (max-width: 500px) {
-  #header{
-    & .inner-wrapper {
-      padding: 0 10px;
-      & .header-msg {
-          margin-bottom: 100px;
-         & .greeting{
-          font-size: 2.1rem;
-          line-height: 2.1rem;
 
-          .smaller {
-            font-size: 1.9rem;
-            line-height: 1.9rem;
+.wrap {
+  padding: 70px 10% 40px 10%;
+  text-align: justify;
+  h2 {
+    font-size: 60px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
 
-          }
-         }
+  }
+}
 
-        & .message {
-          font-size: 1.4rem;
-          line-height: 1.5rem;
-          margin-top: 30px;
-        }
 
-        & .blob {
-            top: -35px;
-            left: -33px;
-            width: 150px;
-        }
-      }
+#me {
+    background: #ffffff url("~@/assets/images/sonia.png") no-repeat right bottom;
+    background-size:auto 100%;
+    .me-text {
+    /* background: url("~/assets/images/sonia.png"); */
+    .blob {
+      position: absolute;
+      top: -25px;
+      z-index: -1;
+      left: -65px;
     }
   }
+}
 
-  .waves{
-      height: auto;
+/* MEDIA QUERIES */
+
+@media (max-width: 1800px) {
+  .wrap {
+     padding: 70px 0 40px 10%;
+  }
+
+  #me {
+    background: #ffffff url("~@/assets/images/sonia.png") no-repeat 115% bottom;
+  }
+}
+
+
+
+@media (max-width: 1600px) {
+  #me {
+    background: #ffffff url("~@/assets/images/sonia.png") no-repeat 125% bottom;
+  }
+}
+
+@media (max-width: 1400px) {
+  #me {
+    background: #ffffff url("~@/assets/images/sonia.png") no-repeat 135% bottom;
   }
 }
 
@@ -216,7 +286,7 @@ export default {
     height: auto;
     & .inner-wrapper {
       padding: 25px 10%;
-        & .header-msg {
+      & .header-msg {
 
           & .greeting{
             font-size: 3.5rem;
@@ -234,13 +304,87 @@ export default {
            top: -30px;
         }
       }
+
+      & .bottom-box{
+        margin-bottom: 40px;
+      }
     }
   }
-  .waves{
-      height: auto;
+
+
+  #me {
+    /* background: #ffffff url("~@/assets/images/sonia-bw.png") no-repeat left bottom;
+    background-size:140% auto; */
+    background-image: none;
+    .me-text {
+      position:relative;
+
+      .image-p{
+        width: 60%;
+        z-index:5;
+        position: relative;
+        text-align: left;
+      }
+
+
+      .me-image {
+        width: 110%;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        right: -40%;
+
+    }
+     }
+
+
   }
 
 }
+
+
+@media (max-width: 500px) {
+  #header{
+    & .inner-wrapper {
+      padding: 10px 20px;
+      & .header-msg {
+          margin-bottom: 50px;
+         & .greeting{
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+
+          .smaller {
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+
+          }
+         }
+
+        & .message {
+          font-size: 1.1rem;
+          line-height: 1.2rem;
+          margin-top: 30px;
+        }
+
+        & .blob {
+            top: -40px;
+            left: -15px;
+            width: 120px;
+        }
+      }
+      & .bottom-box{
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+
+
+  .wrap {
+      padding: 50px 10px;
+    }
+}
+
 
 
 

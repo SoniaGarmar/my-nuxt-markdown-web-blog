@@ -169,13 +169,6 @@
 
 
 /* MEDIA QUERIES */
-@media (max-width: 500px) {
- .navbar{
-     padding:0!important;
-     font-size: 20px;
- }
-}
-
  @media (max-width: 991.98px) {
   .navbar{
      padding:0!important;
@@ -206,6 +199,11 @@
  }
 
 
-
+@media (max-width: 500px) {
+ .navbar{
+     padding:0!important;
+     font-size: 20px;
+ }
+}
 
 </style>

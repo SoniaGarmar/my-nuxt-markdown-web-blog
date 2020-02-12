@@ -6,7 +6,8 @@
 
 body, html {
   font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
+  color: $black;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -45,6 +46,11 @@ body, html {
     color: $base-color;
     background-color: transparent;
   }
+}
+
+.underline{
+  text-decoration: underline;
+ text-decoration-color: $base-color;
 }
 
 /* MEDIA QUERIES */

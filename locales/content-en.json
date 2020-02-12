@@ -20,6 +20,26 @@
     "services": "What I do",
     "portfolio": "What I have done",
     "contact": "Drop me a line"
-  }
+  },
+
+  "me": [
+      "I’m a freelance DEVELOPER with a pinch of DESIGNER.",
+      "I’ve been designing and developing websites, web applications, mobile apps, and other digital creations for many years.",
+      "I got my first computer, a Commodore 64, in the 80’s. I was 10 years old. And I felt in love with technology. ",
+      "Since then, I have always been playing with computers. First as a hobby, then as a job.",
+      "I started to use the Internet back in 1995, when (at least in Spain) it was only accessible from Universities and it took you literally minutes to ",
+      "get connected (just to lose the connection few minutes later). Now, it might look like a nightmare, but back then, it was a dream came true.",
+      "Things have changed a lot since those days of black and white screens and noisy modems, and so I have and my work.",
+      "When the Internet evolved and the need for web sites and web applications (and now also mobile apps) started to grow, I got into ",
+      "internet-related development what became my specialization.",
+      "Over the years, those not so techy aspects of Internet also grabbed my attention and I started to learn about SEO and UX/UI design, ",
+      "which have become a side skill that helps me offer a well-rounded service that goes beyond creating nice and functional websites or applications. ",
+      "All my creations are built having in mind usability and SEO (when necessary).",
+      "Regarding FORMAL EDUCATION, I studied Computer Engineering. However, ",
+      "I'd like to say that I have learned most of what I know about programming in a self-taught way. Spending many hours studying and coding, specially coding.",
+      "Something I keep doing because the one of the most important things in this profession is to never stop learning."
+
+    ]
+
 }
 
