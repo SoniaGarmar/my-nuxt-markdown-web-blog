@@ -54,10 +54,12 @@
     <div class="container-fuid wrap " id="me" >
       <div class="row">
 
-        <div class="col-lg-7 col-md-6 me-text">
+        <div class="col-lg-7  me-text">
            <h2 >
                 <blob class="blob" />
+                <span class="blob-text">
                 ME
+                </span>
             </h2>
 
                 <p v-html="$t('me[0]')"> </p>
@@ -88,7 +90,7 @@
 
                 </p>
 
-                   <img src="~/assets/images/sonia.png" class="me-image  d-lg-none">
+                   <img src="~/assets/images/sonia-sm.png" class="me-image  d-lg-none">
         </div>
 
           <!-- <div class="col-lg-6  ">
@@ -164,8 +166,6 @@ export default {
       }
    }
 }
-
-
 
 /* because we are using this class in a v-html attribute, where the scoped styles are not rendered */
  /* /deep/ .underline{
@@ -248,8 +248,12 @@ export default {
     .blob {
       position: absolute;
       top: -25px;
-      z-index: -1;
+      z-index: 0;
       left: -65px;
+    }
+    .blob-text{
+       z-index: 5;
+       position: relative;
     }
   }
 }
@@ -311,13 +315,13 @@ export default {
     }
   }
 
-
   #me {
-    /* background: #ffffff url("~@/assets/images/sonia-bw.png") no-repeat left bottom;
-    background-size:140% auto; */
+    /* background: #ffffff url("~@/assets/images/sonia-sm.png") no-repeat 120% bottom;
+    background-size:110% auto; */
     background-image: none;
     .me-text {
       position:relative;
+      overflow: hidden;
 
       .image-p{
         width: 60%;
@@ -328,11 +332,11 @@ export default {
 
 
       .me-image {
-        width: 110%;
-        height: auto;
-        position: absolute;
-        bottom: 0;
-        right: -40%;
+          width: 90%;
+          height: auto;
+          position: absolute;
+          bottom: 0;
+          right: -25%;
 
     }
      }
