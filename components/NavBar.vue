@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar navbar-expand-lg navbar-dark default-color fixed-top">
+  <nav class="navbar navbar navbar-expand-xl navbar-dark default-color fixed-top">
       <button class="navbar-toggler" type="button"
         aria-expanded="false" aria-label="Toggle navigation"
         v-bind:class=" { 'navbarOpen': show }"
