@@ -332,6 +332,7 @@ export default {
     font-family: "IBM Plex Mono", monospace;
     color: $white;
     font-size: 1.8rem;
+    line-height: 1.9rem;
   }
 }
 
@@ -605,12 +606,18 @@ export default {
 
 @media (max-width: 1800px) {
   .wrap {
-    padding: 70px 0 40px 10%;
+    padding: 70px 10% 40px 10%;
   }
 
   #me {
     background: #ffffff url("~@/assets/images/sonia.png") no-repeat 115% bottom;
+    // .wrap {
+    //     padding: 70px 10% 40px 10%;
+    //   }
   }
+
+
+
 }
 
 @media (max-width: 1600px) {
@@ -681,11 +688,23 @@ export default {
         width: 80%;
         height: auto;
         position: absolute;
-        bottom: 0;
+        bottom: -40px;
         right: -20%;
       }
     }
   }
+
+  #services {
+    .service-box {
+      .inner {
+          padding: 25px;
+          h3{
+            font-size: 32px;
+          }
+      }
+    }
+}
+
 }
 
 @media (max-width: 991.98px) {
@@ -713,7 +732,7 @@ export default {
   }
 
   .wrap {
-    padding: 70px 10% 10px 10%;
+    padding: 70px 10% 40px 10%;
   }
 
   #me {
@@ -730,7 +749,7 @@ export default {
         width: 90%;
         height: auto;
         position: absolute;
-        bottom: 0;
+        bottom: -40px;
         right: -25%;
       }
     }
@@ -771,8 +790,23 @@ export default {
       }
     }
   }
+
   .wrap {
-    padding: 50px 10px;
+        padding: 50px 10px 20px 10px;
+  }
+
+  .imp-section {
+    .inner {
+      padding: 20px;
+      font-size: 1.2rem;
+      line-height: 1.3rem;
+    }
+  }
+
+  .smaller-imp-text{
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    font-weight: normal
   }
 
   #me {
@@ -791,5 +825,45 @@ export default {
       }
     }
   }
+
+
+#services {
+  margin-top: 40px;
+  .services-text {
+    .blob {
+       top: -30px;
+        left: -5px;
+        width: 170px;
+    }
+
+    h2{
+      text-align:left;
+    }
+  }
+
+  .service-box {
+      .inner {
+        padding: 20px;
+      }
+  }
+}
+
+#portfolio {
+  margin-top: 40px;
+  .wrap{
+    .portfolio-text {
+    .blob {
+        top: -30px;
+        left: -5px;
+        width: 170px;
+    }
+
+    h2{
+      text-align:left;
+    }
+  }
+  }
+}
+
 }
 </style>

@@ -8,13 +8,13 @@
         Wanna see how? <a href=" https://nuxtjs.org/"> Check my blog post </a>
       </div>
 
-      <div class="col-sm-2 text-center ">
+      <div class="col-sm-2 copy ">
         ©{{ new Date().getFullYear() }} Copyright: Sonia García
       </div>
 
       <div class="col-sm text-right">
             <a id="go-top" v-if="isVisible" @click="backToTop">
-              <font-awesome-icon :icon="['fas', 'angle-up']"/>
+              <font-awesome-icon :icon="['fas', 'long-arrow-alt-up']"/>
             </a>
       </div>
 
@@ -71,14 +71,18 @@
      min-height: 50px;
      font-family: "IBM Plex Mono", monospace;
      font-size: 16px;
-     padding: 15px;
+     padding: 30px 15px;
 
      & > div{
-         height: 50px;
+         min-height: 50px;
      }
 
      a{
        color: $grey-med;
+     }
+
+     .copy{
+       text-align:right;
      }
    }
 
@@ -86,15 +90,32 @@
     position: fixed;
     width: 45px;
     height: 45px;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     line-height: 45px;
     display: block;
-    right: 30px;
+    right: 20px;
     bottom: 5px;
     border: none;
     opacity: 1;
-    color:$white;
+    color:$grey-light;
+    font-weight: 200;
 
    }
+
+
+/* MEDIA QUERIES */
+@media (max-width: 500px) {
+  footer{
+    .copy{
+        text-align:center;
+        padding: 20px 0;
+      }
+  }
+
+   #go-top {
+     right: 10px;
+   }
+}
+
 </style>
