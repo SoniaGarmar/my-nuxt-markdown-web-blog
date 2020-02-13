@@ -195,7 +195,7 @@
            </div>
         </div>
 
-        <div class="col-12  services-text  ">
+        <div class="col-12  services-text margin-b-md ">
           <p>
             I work comfortably on both FRONT-END and BACK-END systems alike.
           </p>
@@ -217,31 +217,96 @@
       </div>
     </div>
 
-  <div class = "container-fluid imp-section">
-    <div class="inner">
+    <div class = "container-fluid imp-section">
+      <div class="inner">
+        <p class="smaller-imp-text">
+            <span > Currently I WORK WITH: </span> <br />
+            <span class="font-weight-bold">Business and individuals</span> in need of a
+            website, a web application, a mobile app or any other digital
+            creation. <br />
+            <span class="font-weight-bold">Agencies and teams</span> in need of a pair of
+            digital hands to help them out. <br />
+        </p>
 
-      <p class="smaller-imp-text">
-          <span > Currently I WORK WITH: </span> <br />
-          <span class="font-weight-bold">Business and individuals</span> in need of a
-          website, a web application, a mobile app or any other digital
-          creation. <br />
-          <span class="font-weight-bold">Agencies and teams</span> in need of a pair of
-          digital hands to help them out. <br />
-      </p>
 
-
-      <div class="margin-md">
-        <p class="underline">If you have a project in mind, I’m currently available for freelance work.<p>
-          <div class="d-flex justify-content-center bottom-box">
-                <button type="button" class="btn button--default">
-                LET'S CREATE SOMETHING AWESOME!
-                </button>
-          </div>
+        <div class="margin-md">
+          <p class="underline">If you have a project in mind, I’m currently available for freelance work.<p>
+            <div class="d-flex justify-content-center bottom-box">
+                  <button type="button" class="btn button--default">
+                  LET'S CREATE SOMETHING AWESOME!
+                  </button>
+            </div>
+        </div>
       </div>
-
     </div>
-  </div>
 
+    <!--PORTFOLIO-->
+   <div class="container-fluid " id="portfolio">
+      <div class="row wrap">
+        <div class="col-xl-12 portfolio-text">
+          <h2>
+            <blob class="blob" />
+            <span class="blob-text">
+              WHAT I HAVE DONE
+            </span>
+          </h2>
+
+          <p>
+            Well… Due to confidentiality agreements or to the nature of the project, I can not show here most of the things I do.
+            But if you want to know more about my work, please <span class="underline">drop me a line </span>. I will be pleased to show you some stuff.
+          </p>
+        </div>
+
+        <div class="col-xl-4 reviews-text">
+           <div class="review-box">
+             <div class="inner">
+              <h3>
+               Mario Perez  <br>
+               <a href=" http://www.solucionesdelavado.com/">Simfonia Liquida SL</a>
+              </h3>
+              <p>
+                Sonia ha creado para nosotros varias páginas web, app movil, pequeño crm de actividad comercial y la relación profesional
+                con ella sólo se puede calificar de intachable. <br>
+                Profesional, preocupada por tu problema real y siempre partícipe en el enfoque del mismo y la búsqueda de la mejor solución. Técnicamente preparadísima, metódica y responsable.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4 reviews-text">
+           <div class="review-box">
+             <div class="inner">
+              <h3>
+               Almudena Almagro <br>
+                <a href=" http://www.egar365.es/">Egar365, SL</a>
+              </h3>
+              <p>
+                La Sra. Sonia Garcia ha desarrollado una aplicación informática para nuestra empresa, diseñada a medida para nuestro sector, que nos ha facilitado enormemente la gestión diaria de nuestra empresa
+                 así como la de nuestros franquiciados. <br>
+                 Siempre disponible, cercana y dispuesta a escuchar tus necesidades.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-4 reviews-text">
+           <div class="review-box">
+             <div class="inner">
+              <h3>
+                Jose Luis Alfonso <br>
+                 <a href=" http://www.ikrut.com/">Zodo Ltd</a>-
+              </h3>
+              <p>
+                El trabajo con Sonia ha sido muy satisfactorio en todo momento. Ha cumplido tiempos en todas las tareas asignadas y además se ha integrado en el equipo perfectamente.
+                <br>
+                Hemos quedado muy contentos con su trabajo y por supuesto vamos a seguir contando con ella.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+   </div>
   </div>
 </template>
 
@@ -276,6 +341,10 @@ export default {
 }
 
 .margin-md{
+  margin-top: 40px;
+}
+
+.margin-b-md{
   margin-top: 40px;
 }
 
@@ -321,7 +390,7 @@ export default {
       }
     }
     & .bottom-box {
-      margin-bottom: 80px;
+      margin-bottom: 40px;
     }
   }
 }
@@ -464,11 +533,71 @@ export default {
         height: 100%;
 
         h3{
-          color: $base-color
+          color: $base-color;
+          text-align: left;
         }
 
       }
   }
+
+}
+
+
+#portfolio {
+  .wrap{
+    justify-content: stretch;
+
+    .portfolio-text {
+        align-self: stretch;
+         margin-bottom: 15px;
+        /* background: url("~/assets/images/sonia.png"); */
+        .blob {
+          position: absolute;
+          top: -25px;
+          z-index: 0;
+          left: -65px;
+        }
+        .blob-text {
+          z-index: 5;
+          position: relative;
+        }
+
+        .subheading {
+          font-size: 22px;
+          z-index: 5;
+          position: relative;
+          margin-bottom: 50px;
+        }
+    }
+
+    .reviews-text {
+      align-self: stretch;
+      margin-bottom: 15px;
+    }
+
+    .review-box {
+          background-color: $white;
+          padding: 15px;
+          margin-bottom:15px;
+          height: 100%;
+
+          .inner {
+            border: 2px solid $base-color;
+            padding: 40px;
+            color: $black;
+            height: 100%;
+
+            h3{
+              font-size: 20px;
+               text-align: left;
+            }
+
+          }
+      }
+
+
+  }
+
 
 }
 

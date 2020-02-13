@@ -23,6 +23,14 @@ body, html {
   margin: 0;
 }
 
+a{
+  text-transform: none;
+  color: $base-color;
+  &:hover{
+    color: $base-color;
+  }
+}
+
 
 .btn {
   margin-top: 30px;

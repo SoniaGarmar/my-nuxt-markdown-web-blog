@@ -2,12 +2,14 @@
 <template>
   <footer class="container-fluid">
     <div class="row align-items-center">
-      <div class="col-sm text-left ">
-        Made with Nuxt
+      <div class="col-sm-9 text-left ">
+        Made with <a href=" https://nuxtjs.org/" target="_blank">Nuxt </a>and hosted on <a href="https://www.netlify.com/ " target="_blank">Netlify </a> -
+
+        Wanna see how? <a href=" https://nuxtjs.org/"> Check my blog post </a>
       </div>
 
-      <div class="col-sm text-center ">
-        ©{{ new Date().getFullYear() }} Copyright:
+      <div class="col-sm-2 text-center ">
+        ©{{ new Date().getFullYear() }} Copyright: Sonia García
       </div>
 
       <div class="col-sm text-right">
@@ -67,10 +69,16 @@
      background-color:$black;
      color:$white;
      min-height: 50px;
-
+     font-family: "IBM Plex Mono", monospace;
+     font-size: 16px;
+     padding: 15px;
 
      & > div{
          height: 50px;
+     }
+
+     a{
+       color: $grey-med;
      }
    }
 
