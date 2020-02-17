@@ -11,6 +11,8 @@
   import { eventBus } from '../../plugins/eventbus';
 
   export default {
+    layout: 'blog',
+
     async asyncData({ params, app }) {
       try {
         // import the markdown file

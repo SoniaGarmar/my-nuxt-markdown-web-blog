@@ -39,7 +39,12 @@
       "I'd like to say that I have learned most of what I know about programming in a self-taught way. Spending many hours studying and coding, specially coding.",
       "Something I keep doing because the one of the most important things in this profession is to never stop learning."
 
-    ]
+    ],
+
+
+    "contact":{
+      "button": "Drop me a line"
+    }
 
 }
 

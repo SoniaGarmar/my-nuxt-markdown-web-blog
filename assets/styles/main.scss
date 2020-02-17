@@ -42,6 +42,12 @@ a{
   font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 4px;
+
+}
+
+.btn:focus{
+  outline: 0;
+  box-shadow: none
 }
 
 

@@ -21,9 +21,9 @@
           </p>
 
           <div class="d-flex justify-content-center bottom-box">
-            <button type="button" class="btn button--default">
-              {{ $t("header.button") }}
-            </button>
+            <a class="btn button--default" href="mailto:hxexlxlo@cxoxdexwxithsxonxia.com" onmouseover="this.href=this.href.replace(/x/g,'')">
+                {{ $t("header.button") }}
+            </a>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
     </div>
 
     <!--ME-->
-    <div class="container-fluid  " id="me">
+    <div class="container-fluid" id="me">
       <div class="row wrap">
         <div class="col-xl-7  me-text">
           <h2>
@@ -105,15 +105,15 @@
         </p>
 
         <div class="d-flex justify-content-center bottom-box">
-          <button type="button" class="btn button--default">
-            {{ $t("header.button") }}
-          </button>
+               <a class="btn button--default" href="mailto:hxexlxlo@cxoxdexwxithsxonxia.com" onmouseover="this.href=this.href.replace(/x/g,'')">
+                {{ $t("header.button") }}
+            </a>
         </div>
       </div>
     </div>
 
     <!--SERVICES -->
-    <div class="container-fluid  " id="services">
+    <div class="container-fluid" id="services">
       <div class="row wrap">
         <div class="col-12  services-text  ">
           <h2>
@@ -232,16 +232,16 @@
         <div class="margin-md">
           <p class="underline">If you have a project in mind, I’m currently available for freelance work.<p>
             <div class="d-flex justify-content-center bottom-box">
-                  <button type="button" class="btn button--default">
+                <a class="btn button--default" href="mailto:hxexlxlo@cxoxdexwxithsxonxia.com" onmouseover="this.href=this.href.replace(/x/g,'')">
                   LET'S CREATE SOMETHING AWESOME!
-                  </button>
+                  </a>
             </div>
         </div>
       </div>
     </div>
 
     <!--PORTFOLIO-->
-   <div class="container-fluid " id="portfolio">
+   <div class="container-fluid" id="portfolio">
       <div class="row wrap">
         <div class="col-xl-12 portfolio-text">
           <h2>
@@ -307,6 +307,30 @@
 
       </div>
    </div>
+
+   <!--CONTACT-->
+    <div class="container-fluid imp-section" id="contact">
+        <div class="inner">
+          <div class="d-flex flex-column justify-content-center">
+            <h2 class="underline text-center">
+                GET IN TOUCH
+            </h2>
+
+            <p class="text-center margin-t-md">
+              Want to say hello? <br>
+              Interested in working together?
+            </p>
+
+            <div class="d-flex justify-content-center bottom-box">
+              <a class="btn button--default" href="mailto:hello@codewithsonia.com">
+                {{ $t("contact.button") }}
+             </a>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
   </div>
 </template>
 
@@ -346,6 +370,10 @@ export default {
 }
 
 .margin-b-md{
+  margin-top: 40px;
+}
+
+.margin-t-md{
   margin-top: 40px;
 }
 

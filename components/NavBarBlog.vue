@@ -17,26 +17,11 @@
               </nuxt-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#me"> {{ $t('navbar.me') }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#services"> {{ $t('navbar.services') }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#portfolio"> {{ $t('navbar.portfolio') }}</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#contact"> {{ $t('navbar.contact') }}</a>
           </li>
         </ul>
 
         <ul class="navbar-nav ml-auto nav-flex-icons secondary-items">
-          <li class="nav-item">
-             <nuxt-link :to="localePath('blog')" class="nav-link">
-                  Blog
-              </nuxt-link>
-          </li>
-
           <li class="nav-item">
             <a class="nav-link waves-effect waves-light">
               <font-awesome-icon :icon="['fab', 'linkedin']"/>

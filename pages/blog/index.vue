@@ -12,10 +12,12 @@
         </ul>
     </div>
 </template>
+
 <script>
   export default {
-    async asyncData({app}) {
+    layout: 'blog',
 
+    async asyncData({app}) {
        let postsContent;
        switch (app.i18n.locale) {
          case 'en':
