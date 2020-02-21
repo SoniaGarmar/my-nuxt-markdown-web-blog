@@ -17,7 +17,7 @@
               </nuxt-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contact"> {{ $t('navbar.contact') }}</a>
+            <router-link class="nav-link" to="/#contact" >{{ $t('navbar.contact') }}</router-link>
           </li>
         </ul>
 

@@ -34,19 +34,19 @@
       // It provides a keys() method to retrieving the contents of the context.
 
       const imports = postsContent.keys().map((key) => {
-      console.log("****key: " + key); // ./first-post.md
-      console.log("***match: " + key.match(/\/(.+)\.md$/));
+      // console.log("****key: " + key); // ./first-post.md
+      // console.log("***match: " + key.match(/\/(.+)\.md$/));
 
        // with const [, slug] we are taking the second value from the array
        // returned by key.match and assigning it to the variable slug
       const [, slug] = key.match(/\/(.+)\.md$/);
 
        // now we can retrieve the content form the postsContent by passing the key
-       console.log("*****postsContent(key) " + JSON.stringify(postsContent(key)));
+      // console.log("*****postsContent(key) " + JSON.stringify(postsContent(key)));
        return postsContent(key);
       });
 
-      console.log( imports);
+     /// console.log( imports);
 
       return {
         posts: imports
