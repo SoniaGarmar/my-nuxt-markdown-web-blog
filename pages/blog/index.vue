@@ -43,7 +43,6 @@
                   id="search-input"
                   v-on:change="clearTags"
                   v-on:focus="onSearchFocus"
-
                   class="search"
                   v-model="search"/>
               </label>
@@ -54,15 +53,27 @@
               </button>
 
               <div id="tag-filter" class="d-inline-block">
-                <b-form-group label="Select by tag:">
-                  <b-form-checkbox-group
-                    id="tags-filter"
-                    v-model="selectedTags"
-                    :options="tagsEN"
-                    name="tags"
-                    v-on:change="clearSearch"
-                  ></b-form-checkbox-group>
-                </b-form-group>
+                <button class="filter"  v-bind:class="{ active: filtering }"
+                     v-on:click="onFilterOpen" >
+                    <font-awesome-icon :icon="['fas', 'filter']"/>
+                </button>
+
+                <div id="tags-box" v-bind:class="{ active: filtering }">
+                    <b-form-group label="Select by tag:" >
+                      <b-form-checkbox-group
+                        id="tags-filter"
+                        v-model="selectedTags"
+                        :options="tagsEN"
+                        name="tags"
+                        v-on:change="clearSearch"
+                      ></b-form-checkbox-group>
+                      <button type="reset" id="close-btn-filter"
+
+                        v-on:click="onFilterClose">
+                        <font-awesome-icon :icon="['fas', 'times']"/>
+                      </button>
+                    </b-form-group>
+                </div>
               </div>
             </div>
         </div>
@@ -106,7 +117,8 @@
       tagsES: ['uno', 'dos', 'tres'],
       tagsEN: ['one', 'two', 'three'],
       selectedTags:[],
-      searching: false
+      searching: false,
+      filtering: false
     }
   },
 
@@ -172,6 +184,13 @@
       onSearchClose(){
        this.searching = false;
        this.search ='';
+      },
+      onFilterOpen(){
+       this.filtering = true;
+      },
+      onFilterClose(){
+       this.filtering = false;
+       this.selectedTags = [];
       }
     }
 
@@ -439,6 +458,45 @@
 
     #tag-filter{
       margin-left: 40px;
+      .filter {
+        display: inline-block;
+        position: relative;
+        border: none;
+        background-color: transparent;
+        color: $base-color;
+        outline:none;
+        height: 45px;
+        width: 45px;
+        font-size: 30px;
+        &.active{
+          display: none;
+        }
+      }
+
+      #tags-box{
+          display: none;
+          position: relative;
+          &.active{
+            display: inline-block;
+          }
+
+          #close-btn-filter{
+            background-color: transparent;
+            border:none;
+            color: $base-color;
+            outline:none;
+            right: 0px;
+            top: 4px;
+            position: absolute;
+            height: 45px;
+            font-size: 26px;
+          }
+
+      }
+
+
+
+
     }
 
   }
