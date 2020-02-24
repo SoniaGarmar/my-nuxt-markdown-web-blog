@@ -53,22 +53,22 @@
               </button>
 
               <div id="tag-filter" class="d-inline-block">
-                <button class="filter"  v-bind:class="{ active: filtering }"
+                <div class="filter"  v-bind:class="{ active: filtering }"
                      v-on:click="onFilterOpen" >
                     <font-awesome-icon :icon="['fas', 'filter']"/>
-                </button>
+                </div>
 
                 <div id="tags-box" v-bind:class="{ active: filtering }">
-                    <b-form-group label="Select by tag:" >
+                    <b-form-group  >
                       <b-form-checkbox-group
                         id="tags-filter"
                         v-model="selectedTags"
                         :options="tagsEN"
                         name="tags"
+                        class="tags-check"
                         v-on:change="clearSearch"
                       ></b-form-checkbox-group>
                       <button type="reset" id="close-btn-filter"
-
                         v-on:click="onFilterClose">
                         <font-awesome-icon :icon="['fas', 'times']"/>
                       </button>
@@ -394,8 +394,8 @@
       width: 35px;
       border: 3px solid $base-color;
       border-radius: 50%;
-      -webkit-transition: all 300ms ease;
-      transition: all 300ms ease;
+      -webkit-transition: all 500ms ease;
+      transition: all 500ms ease;
       cursor: text;
       &:after {
         content: "";
@@ -408,8 +408,8 @@
         border-radius: 3px;
         -webkit-transform: rotate(-45deg);
                 transform: rotate(-45deg);
-        -webkit-transition: all 200ms ease;
-        transition: all 200ms ease;
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
       }
 
       &.active,
@@ -469,28 +469,54 @@
         width: 45px;
         font-size: 30px;
         &.active{
-          display: none;
+          //display: none;
+        }
+        &:hover {
+         &+#tags-box{
+            // display:inline-block;
+             visibility: visible;
+              opacity: 1;
+         }
+
         }
       }
 
       #tags-box{
-          display: none;
+          visibility: hidden;
+          opacity: 0;
+          transition: visibility 0s, opacity 500ms ease;
+          display: inline-block;
           position: relative;
+          visibility: hidden;
+          opacity: 0;
           &.active{
-            display: inline-block;
+            //display: inline-block;
+             visibility: visible;
+            opacity: 1;
+
           }
 
           #close-btn-filter{
             background-color: transparent;
             border:none;
             color: $base-color;
-            outline:none;
-            right: 0px;
-            top: 4px;
+            right: -25px;
+            top: -8px;
             position: absolute;
             height: 45px;
             font-size: 26px;
           }
+
+
+
+   /deep/    #tags-filter {
+         .custom-control-input:checked ~ .custom-control-label::before {
+              color: #fff;
+              border-color: $black;
+              background-color: $black;
+          }
+       }
+
 
       }
 
