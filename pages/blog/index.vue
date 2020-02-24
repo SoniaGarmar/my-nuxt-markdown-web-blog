@@ -52,26 +52,32 @@
                 v-on:change="clearSearch"
               ></b-form-checkbox-group>
             </b-form-group>
-
-
-
       </div>
        
-       <div id="posts">
-         <ul>
-            <li v-for="post in filteredPosts" :key="post.attributes.slug">
-              <nuxt-link
-                :to="localePath({ name: 'blog-slug', params: { slug: post.attributes.slug } })">
-                {{ post.attributes.title }}
-              </nuxt-link>
-                <p></p> {{ post.attributes.date  }}
-                <ul>
-                   <li v-for="tag in post.attributes.tags" :key="tag">
-                      {{ tag  }}
-                   </li>
-                </ul>
-            </li>
-         </ul>
+       <div class="container-fluid" id="posts">
+         <div class="row">
+           <div class="col-md-4 post-box-wrapper"  v-for="post in filteredPosts" :key="post.attributes.slug">
+              <div class= "post-box">
+                <div class="inner">
+                    <nuxt-link
+                      :to="localePath({ name: 'blog-slug', params: { slug: post.attributes.slug } })">
+                      {{ post.attributes.title }}
+                    </nuxt-link>
+
+                    <div class="meta">
+                      <span>{{ post.attributes.date }} | </span>
+                      <ul>
+                        <li v-for="tag in post.attributes.tags" :key="tag">
+                            {{ tag  }}
+                        </li>
+                      </ul>
+                    </div>
+
+                    <p>{{post.attributes.description}}</p>
+                  </div>
+              </div>     
+           </div>                 
+         </div>
        </div>
     </div>
 </template>
@@ -271,5 +277,71 @@
     text-transform: uppercase;
   }
 }
+
+#posts.container-fluid{
+  padding: 40px 10%;
+}
+
+.post-box-wrapper{
+   &:nth-child(even) .post-box{
+     background-color:$base-color;
+
+
+
+  }
+
+   &:nth-child(odd) .post-box{
+      background-color: $black;
+
+  }
+  .post-box {
+    // background-color: $black;
+    padding: 15px;
+    margin-top:30px;
+      .inner {
+        border: 2px solid $white;
+        padding: 15px;
+        font-family: "IBM Plex Mono", monospace;
+        color: $white;
+        font-size:18px;
+        line-height:20px;
+
+        a{
+           color:$white;
+           text-transform: uppercase;
+            font-size: 26px;
+            line-height:28px;
+
+        }
+
+        .meta{
+           font-size: 14px;
+           line-height:16px;
+           margin: 5px 0 10px 0;
+           padding-bottom: 10px;
+           border-bottom: 1px dashed white;
+            ul{
+             display: inline;
+             list-style: none;
+             padding: 0;
+             li{
+               display: inline;
+               &:not(:last-child):after{
+                  content:"-"
+               }
+             }
+            }
+         }
+
+        p{
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            margin-top: 15px;
+        }
+
+      }
+    }
+}
+
+
 
 </style>
