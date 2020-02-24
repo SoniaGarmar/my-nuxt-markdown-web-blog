@@ -16,5 +16,10 @@
     "services": "Lo que hago",
     "portfolio": "Cosas que he hecho",
     "contact": "¿Quieres que hablemos?"
+  },
+
+  "blog":{
+    "header" : "Mi Blog",
+    "tagline": "Escribo sobre código"
   }
 }

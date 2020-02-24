@@ -42,9 +42,14 @@
     ],
 
 
-    "contact":{
-      "button": "Drop me a line"
-    }
+  "contact":{
+    "button": "Drop me a line"
+  },
+
+  "blog":{
+    "header" : "My Blog",
+    "tagline": "I write about coding"
+  }
 
 }
 

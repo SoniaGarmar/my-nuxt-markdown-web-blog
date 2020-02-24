@@ -5,6 +5,7 @@ date: Jan 17 2020
 slug: 'second-post'
 slugTrans: 'segundo-post'
 description:  This is my second markdown post
+tags: ['one', 'three']
 ---
 <!---
 You can use standard HTML comment syntax.

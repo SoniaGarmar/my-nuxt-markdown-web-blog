@@ -451,14 +451,14 @@ export default {
 }
 
 .wave-one > use {
-  animation: move-forever2 8s linear infinite;
+  animation: move-forever2 16s linear infinite;
   &:nth-child(1) {
     animation-delay: -2s;
   }
 }
 
 .wave-two > use {
-  animation: move-forever4 4s linear infinite;
+  animation: move-forever4 10s linear infinite;
   &:nth-child(1) {
     animation-delay: -2s;
   }

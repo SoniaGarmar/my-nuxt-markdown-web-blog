@@ -4,7 +4,8 @@ title: Mi primer post con Markdown
 date: 17 Enero 2020
 slug: 'primer-post'
 slugTrans: 'first-post'
-description:  Este es mi primer post con Markdown
+description:  Este es mi primer post con Markdown,
+tags: ['uno', 'dos']
 ---
 <!---
 You can use standard HTML comment syntax.
