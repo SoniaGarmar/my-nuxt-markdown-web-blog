@@ -37,10 +37,22 @@
 
        <div>
             <div class="search-box">
-              <input type="text" v-on:change="clearTags"
-               v-model="search"
-               placeholder="Search title.."/>
-              <label>Search title:</label>
+               <label class="search" for="search-input" v-bind:class="{ active: searching }">
+                 <input type="text"
+                  id="search-input"
+                  v-on:change="clearTags"
+                  v-on:focus="onSearchFocus"
+
+                  class="search"
+                  v-model="search"/>
+              </label>
+              <button type="reset" id="close-btn"
+                v-bind:class="{ active: searching }"
+                v-on:click="onSearchClose">
+                <font-awesome-icon :icon="['fas', 'times']"/>
+              </button>
+
+
             </div>
 
             <b-form-group label="Select by tag:">
@@ -91,7 +103,8 @@
       search: '',
       tagsES: ['uno', 'dos', 'tres'],
       tagsEN: ['one', 'two', 'three'],
-      selectedTags:[]
+      selectedTags:[],
+      searching: false
     }
   },
 
@@ -149,6 +162,13 @@
       },
       clearSearch() {
         this.search ='';
+      },
+
+      onSearchFocus(){
+       this.searching = true;
+      },
+      onSearchClose(){
+       this.searching = false;
       }
     }
 
@@ -294,7 +314,7 @@
       background-color: $black;
 
   }
-  .post-box {
+.post-box {
     // background-color: $black;
     padding: 15px;
     margin-top:30px;
@@ -341,6 +361,88 @@
       }
     }
 }
+
+
+
+.search {
+  display: inline-block;
+  position: relative;
+  height: 35px;
+  width: 35px;
+  border: 3px solid $base-color;
+  border-radius: 50%;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  cursor: text;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    right: -7px;
+    top: 20px;
+    background: red;
+    border-radius: 3px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease;
+  }
+  &.active,
+  &:hover {
+      margin-right: 0px;
+      border-radius: 1px;
+      width: 400px;
+      &:after {
+        height: 0px;
+      }
+  }
+    &.active{
+      height: 45px;
+      padding-right:40px;
+      padding-left:10px;
+    }
+  input {
+    width: 100%;
+    border: none;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 16px;
+    color:$grey-med;
+    background: transparent;
+    outline: none;
+  }
+}
+
+ #close-btn{
+    border: none;
+    background-color: transparent;
+    color: $base-color;
+    outline:none;
+    right: 40px;
+    position: relative;
+    height: 45px;
+    display: none;
+    font-size: 26px;
+    &.active{
+       display:inline-block
+    }
+  }
+
+
+// .search.active:after,
+// .search:hover:after {
+//   height: 0px;
+// }
+// .search input {
+//   width: 100%;
+//   border: none;
+//   font-family: "IBM Plex Mono", monospace;
+//   font-size: 16px;
+//   color:$grey-med;
+//   background: transparent;
+//   outline: none;
+// }
+
 
 
 
