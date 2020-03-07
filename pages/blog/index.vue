@@ -153,15 +153,20 @@
             // returned by key.match and assigning it to the variable slug
             const [, slug] = key.match(/\/(.+)\.md$/);
 
+
             // now we can retrieve the content form the postsContent by passing the key
             // console.log("*****postsContent(key) " + JSON.stringify(postsContent(key)));
             return postsContent(key);
         });
 
+
+        const sortedPosts = imports.sort((a, b) => (a.date > b.date) ? 1 : -1)
+
+
          // console.log( imports);
 
         return {
-          posts: imports
+          posts:sortedPosts
        }
     },
 

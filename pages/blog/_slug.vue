@@ -89,6 +89,29 @@
 <style scoped lang="scss">
   @import "../../assets/styles/main.scss";
 
+  #post{
+
+
+   /deep/ h2{
+       font-family: "IBM Plex Mono", monospace;
+       text-transform: uppercase;
+       margin-top: 80px;
+    }
+
+   /deep/   h3{
+       font-family: "IBM Plex Mono", monospace;
+       text-transform: capitalize;
+       margin-top: 60px;
+       font-size: 1.50rem;
+
+    }
+
+    /deep/  p{
+      text-align: justify;
+    }
+  }
+
+
     #post-header {
       background-color: $black;
       // min-height: 100vh;
@@ -96,7 +119,7 @@
       padding-bottom: 150px;
 
       & .inner-wrapper {
-        padding: 0 10%;
+        padding: 0 15%;
         //min-height: 100%;
         & .header-msg {
           margin-bottom: 40px;
@@ -199,28 +222,10 @@
     }
   }
 
-  .wrap {
-    padding: 70px 10% 40px 10%;
-    text-align: justify;
-    h2 {
-      font-size: 60px;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-      font-family: "IBM Plex Mono", monospace;
-      text-transform: uppercase;
-    }
-
-    h3 {
-      font-size: 40px;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-      font-family: "IBM Plex Mono", monospace;
-      text-transform: uppercase;
-    }
-  }
 
   #post.container-fluid{
-    padding: 60px 10%;
+    padding: 60px 15%;
+
   }
 
 
