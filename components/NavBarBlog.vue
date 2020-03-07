@@ -16,8 +16,13 @@
                   {{ $t('navbar.home') }}
               </nuxt-link>
           </li>
+          <li class="nav-item" @click="toggleNavbar">
+            <nuxt-link :to="localePath('blog')" class="nav-link" >
+                  Blog
+              </nuxt-link>
+          </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/#contact" >{{ $t('navbar.contact') }}</router-link>
+            <nuxt-link to="/#contact" class="nav-link"  >{{ $t('navbar.contact') }}</nuxt-link>
           </li>
         </ul>
 

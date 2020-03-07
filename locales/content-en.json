@@ -48,7 +48,8 @@
 
   "blog":{
     "header" : "My Blog",
-    "tagline": "I write about coding"
+    "tagline": "I write about coding",
+    "published": "Published date:"
   }
 
 }

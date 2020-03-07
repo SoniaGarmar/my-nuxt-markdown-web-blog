@@ -17,16 +17,16 @@
               </nuxt-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#me"> {{ $t('navbar.me') }}</a>
+            <a @click="toggleNavbar" class="nav-link" href="#me"> {{ $t('navbar.me') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#services"> {{ $t('navbar.services') }}</a>
+            <a @click="toggleNavbar" class="nav-link" href="#services"> {{ $t('navbar.services') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#portfolio"> {{ $t('navbar.portfolio') }}</a>
+            <a @click="toggleNavbar" class="nav-link" href="#portfolio"> {{ $t('navbar.portfolio') }}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#contact"> {{ $t('navbar.contact') }}</a>
+            <a @click="toggleNavbar" class="nav-link" href="#contact"> {{ $t('navbar.contact') }}</a>
           </li>
         </ul>
 

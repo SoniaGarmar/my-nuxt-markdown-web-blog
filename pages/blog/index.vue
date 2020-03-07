@@ -6,7 +6,7 @@
             <div class="header-msg">
               <h1 class="heading">
                 <blob class="blob" />
-                <span v-html="$t('blog.header')"></span>
+                <span class="blob-text" v-html="$t('blog.header')"></span>
                 <br>
                 <span class="smaller" v-html="$t('blog.tagline')"> </span>
               </h1>
@@ -108,19 +108,25 @@
 </template>
 
 <script>
+  import Blob from "~/components/Blob.vue";
+
   export default {
     layout: 'blog',
 
-  data: function () {
-    return {
-      search: '',
-      tagsES: ['uno', 'dos', 'tres'],
-      tagsEN: ['one', 'two', 'three'],
-      selectedTags:[],
-      searching: false,
-      filtering: false
-    }
-  },
+    components: {
+      Blob
+    },
+
+    data: function () {
+      return {
+        search: '',
+        tagsES: ['uno', 'dos', 'tres'],
+        tagsEN: ['one', 'two', 'three'],
+        selectedTags:[],
+        searching: false,
+        filtering: false
+      }
+    },
 
     async asyncData({app}) {
        let postsContent;
@@ -219,12 +225,12 @@
           position: relative;
           font-size: 4.3rem;
           line-height: 4.3rem;
-          color: $base-color;
+          color: $white;
           text-transform: uppercase;
           z-index: 5;
           .smaller {
-            font-size: 2.8rem;
-            line-height: 2.8rem;
+            font-size: 2.6rem;
+            line-height: 2.6rem;
             color: $white;
             text-transform: none;
           }
@@ -527,11 +533,10 @@
 
 
  /* MEDIA QUERIES */
-
 @media (max-width:1100px) {
    #blog-header {
     padding-top: 100px;
-    padding-bottom: 40px;
+    padding-bottom: 150px;
 
       & .inner-wrapper {
         padding: 0 5%;
@@ -541,8 +546,8 @@
             line-height: 3.2rem;
 
               .smaller {
-                font-size: 2.3rem;
-                line-height: 2.3rem;
+                font-size: 2.1rem;
+                line-height: 2.1rem;
               }
 
             }
@@ -557,10 +562,26 @@
     padding: 70px 10px 40px 10px;
   }
 
+
+.wave-one > use {
+  animation: move-forever2 12s linear infinite;
+  &:nth-child(1) {
+    animation-delay: 3s;
+  }
+}
+
+.wave-two > use {
+  animation: move-forever4 18s linear infinite;
+  &:nth-child(1) {
+    animation-delay: -2s;
+  }
+}
+
+
   #blog-header {
-  min-height: 100vh;
+ // min-height: 100vh;
   padding-top: 120px;
-  padding-bottom: 20px;
+  padding-bottom: 120px;
 
     & .inner-wrapper {
       padding: 0 20px;
@@ -570,13 +591,20 @@
           line-height: 2.4rem;
 
             .smaller {
-              font-size: 1.8rem;
-              line-height: 1.8rem;
+              font-size: 1.6rem;
+              line-height: 1.6rem;
             }
+        }
 
-          }
+        & .blob {
+          top: -40px;
+          left: -15px;
+          width: 120px;
         }
       }
+
+
+    }
     }
 
   .post-box {

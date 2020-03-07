@@ -784,7 +784,7 @@ export default {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   #header {
     padding-top: 80px;
     & .inner-wrapper {
@@ -892,6 +892,25 @@ export default {
   }
   }
 }
+
+
+
+
+.wave-one > use {
+  animation: move-forever2 12s linear infinite;
+  &:nth-child(1) {
+    animation-delay: 3s;
+  }
+}
+
+.wave-two > use {
+  animation: move-forever4 18s linear infinite;
+  &:nth-child(1) {
+    animation-delay: -2s;
+  }
+}
+
+
 
 }
 </style>
