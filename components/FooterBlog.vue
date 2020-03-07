@@ -91,15 +91,15 @@
       </div>
     </div>
 
-    <div class="row align-items-center">
-      <div class="col-sm-9 text-left ">
+    <div class="row align-items-center footer-bottom">
+      <div class="col-lg-7 col-xl-9 ">
         Made with <a href=" https://nuxtjs.org/" target="_blank">Nuxt </a>and
         hosted on
         <a href="https://www.netlify.com/ " target="_blank">Netlify </a> - Wanna
         see how? <a href=" https://nuxtjs.org/"> Check my blog post </a>
       </div>
 
-      <div class="col-sm-2 copy ">
+      <div class="col-lg-5 col-xl-2 copy ">
         ©{{ new Date().getFullYear() }} Copyright: Sonia García
       </div>
 
@@ -231,6 +231,13 @@ footer {
   font-family: "IBM Plex Mono", monospace;
   font-size: 16px;
   padding: 30px 15px;
+
+   .footer-bottom{
+      margin-top: 40px;
+      :first-of-type{
+        text-align: left;
+      }
+    }
 
   & > div {
     min-height: 50px;
@@ -502,16 +509,52 @@ body {
     }
 
 /* MEDIA QUERIES */
-@media (max-width: 500px) {
+
+@media (max-width:1100px) {
+  footer{
+    .imp-section {
+      .inner {
+       font-size: 1.6rem;
+        line-height: 1.7rem;
+      }
+   }
+  }
+
+}
+
+@media (max-width: 600px) {
   footer {
+    .footer-bottom{
+      margin-top: 40px;
+      :first-of-type{
+        text-align: justify;
+      }
+    }
     .copy {
       text-align: center;
-      padding: 20px 0;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .imp-section {
+      .inner {
+        padding: 20px;
+
+      }
     }
   }
 
   #go-top {
     right: 10px;
+  }
+
+  #af-form-164720178 .af-standards .af-element {
+   padding-right: 0;
+   padding-left: 0;
+  }
+
+  #af-form-164720178 .af-element.privacyPolicy {
+    margin-left: 0;
   }
 }
 </style>

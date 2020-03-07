@@ -81,7 +81,7 @@
        
        <div class="container-fluid" id="posts">
          <div class="row">
-           <div class="col-md-4 post-box-wrapper"  v-for="post in filteredPosts" :key="post.attributes.slug">
+           <div class="col-lg-4 col-md-6 post-box-wrapper"  v-for="post in filteredPosts" :key="post.attributes.slug">
               <div class= "post-box">
                 <div class="inner">
                     <nuxt-link
@@ -321,15 +321,12 @@
   }
 
   #posts.container-fluid{
-    padding: 40px 10%;
+    padding: 20px 10% 60px 10%;
   }
 
   .post-box-wrapper{
     &:nth-child(even) .post-box{
       background-color:$base-color;
-
-
-
     }
 
     &:nth-child(odd) .post-box{
@@ -385,7 +382,7 @@
   }
 
   #top-bar{
-    padding: 40px;
+    padding: 40px 10% 0 10%;
 
     .search {
       display: inline-block;
@@ -526,6 +523,87 @@
     }
 
   }
+
+
+
+ /* MEDIA QUERIES */
+
+@media (max-width:1100px) {
+   #blog-header {
+    padding-top: 100px;
+    padding-bottom: 40px;
+
+      & .inner-wrapper {
+        padding: 0 5%;
+        & .header-msg {
+          & .heading {
+            font-size: 3.2rem;
+            line-height: 3.2rem;
+
+              .smaller {
+                font-size: 2.3rem;
+                line-height: 2.3rem;
+              }
+
+            }
+          }
+        }
+      }
+}
+
+
+@media (max-width:767px) {
+  .wrap {
+    padding: 70px 10px 40px 10px;
+  }
+
+  #blog-header {
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 20px;
+
+    & .inner-wrapper {
+      padding: 0 20px;
+      & .header-msg {
+        & .heading {
+          font-size: 2.4rem;
+          line-height: 2.4rem;
+
+            .smaller {
+              font-size: 1.8rem;
+              line-height: 1.8rem;
+            }
+
+          }
+        }
+      }
+    }
+
+  .post-box {
+    .inner {
+        min-height: 150px;
+    }
+  }
+
+  #top-bar {
+    .search{
+       &.active,
+      &:hover {
+       width: 90%;
+      }
+    }
+
+    #close-btn {
+      right: -92%;
+      top: -55px;
+    }
+
+    #tag-filter {
+       margin-left: 0;
+    }
+  }
+}
+
 
 
 
