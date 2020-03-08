@@ -33,7 +33,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/eventbus'
+    '~/plugins/eventbus',
+    '~/plugins/prism',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -70,7 +71,8 @@ export default {
       ]
     }],
 
-    ['nuxt-i18n', i18nOptions]
+    ['nuxt-i18n', i18nOptions],
+   // ['@nuxtjs/markdownit', { linkify: true }]
 
   ],
   /*

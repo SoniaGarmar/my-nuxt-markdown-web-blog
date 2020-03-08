@@ -229,6 +229,15 @@ I have also added the `scope` attribute because I want the scope of this css cod
 
 Feel free to add your own html and css, but if you want to follow along with me, here is the code I'm using for the NavBar component:
 
+```scss
+.grid {
+  display: grid;
+  @media (min-width: 576px) {
+    grid-template-columns: 1fr 1fr;
+  }
+```
+
+
 ```javascript
 <template>
   

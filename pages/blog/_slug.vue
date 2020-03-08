@@ -48,6 +48,17 @@
 
 <script>
   import { eventBus } from '../../plugins/eventbus';
+  import Prism from '../../plugins/prism';
+
+
+  //const fm = require('front-matter')
+  const md = require('markdown-it')({
+    html: true,
+    linkify: true,
+    typographer: true
+  })
+
+
 
   export default {
     layout: 'blog',
@@ -59,6 +70,8 @@
        const postContent = await import(`~/content/blog/${app.i18n.locale.toUpperCase()}/${params.slug}.md`);
         // that object has a "attributes" property that stores an object with all the attributes defined in th markdown file
         const attr = postContent.attributes;
+
+ //let res = fm(postContent.default)
         // inspect what we get in the console
         // This is want we want to make available in our template
          return {
@@ -67,7 +80,8 @@
             title: attr.title,
             date: attr.date,
             description: attr.description,
-            content: postContent.html,
+           // content: postContent.html,
+  content: md.render(postContent.html),
             slugTrans: attr.slugTrans
           }
       } catch(err) {
@@ -79,6 +93,10 @@
    created(){
       // Event emit passing the data we want to send to the receiver
       this.$eventBus.$emit('inPost', this.slugTrans);
+  },
+
+  mounted() {
+    Prism.highlightAll()
   }
 
 
@@ -231,13 +249,13 @@
     padding: 60px 15%;
   }
 
-   /deep/ pre {
-    background: $grey-light;
-    font-size: 16px;
-    padding: .2em .4em;
-    color: $grey-dark;
-    margin: 30px 0;
-   }
+  //  /deep/ pre {
+  //   background: $grey-light;
+  //   font-size: 16px;
+  //   padding: .2em .4em;
+  //   color: $grey-dark;
+  //   margin: 30px 0;
+  //  }
 
 
 
