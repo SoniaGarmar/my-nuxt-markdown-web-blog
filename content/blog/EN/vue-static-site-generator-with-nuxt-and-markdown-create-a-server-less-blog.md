@@ -93,10 +93,15 @@ For my blog (and for this posts) I'm going to focus in Static Site Generators be
 ### Structure of a Nuxt Project
 The structure of a Nuxt project will be a little different form that of a Vue project
 
-<img src="/_nuxt/assets/images/my-blog-post/01_nuxt_project_structure.png" width=100% height=auto alt="static site generator with nuxt">
+<img src="/blog-images/my-web-post/01_nuxt_project_structure.png" width=100% height=auto alt="static site generator with nuxt">
+
+
+
+
 ----
-<img src="/_nuxt/assets/images/22_navbar.png" width=50% height=auto alt="static site generator with nuxt">
-<img src="/_nuxt/assets/images/sonia-sm.png" width=50% height=auto alt="static site generator with nuxt">
+
+<!-- <img src="/_nuxt/assets/images/sonia-sm.png" width=50% height=auto alt="static site generator with nuxt"> -->
+
 
 ## Images
 
