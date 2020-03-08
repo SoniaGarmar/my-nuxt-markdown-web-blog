@@ -91,6 +91,10 @@
 
   #post{
 
+   /deep/ img{
+     margin: 0 auto 30px auto;
+     display: block;
+   }
 
    /deep/ h2{
        font-family: "IBM Plex Mono", monospace;
@@ -225,32 +229,45 @@
 
   #post.container-fluid{
     padding: 60px 15%;
-
   }
+
+   /deep/ pre {
+    background: $grey-light;
+    font-size: 16px;
+    padding: .2em .4em;
+    color: $grey-dark;
+    margin: 30px 0;
+   }
+
+
 
 
  /* MEDIA QUERIES */
 
 
 @media (max-width:767px) {
+
+  #post.container-fluid{
+    padding: 60px 15px;
+  }
+
   .wrap {
     padding: 70px 10px 40px 10px;
   }
 
-
-.wave-one > use {
-  animation: move-forever2 12s linear infinite;
-  &:nth-child(1) {
-    animation-delay: 3s;
+  .wave-one > use {
+    animation: move-forever2 12s linear infinite;
+    &:nth-child(1) {
+      animation-delay: 3s;
+    }
   }
-}
 
-.wave-two > use {
-  animation: move-forever4 18s linear infinite;
-  &:nth-child(1) {
-    animation-delay: -2s;
+  .wave-two > use {
+    animation: move-forever4 18s linear infinite;
+    &:nth-child(1) {
+      animation-delay: -2s;
+    }
   }
-}
 
 
   #post-header {
