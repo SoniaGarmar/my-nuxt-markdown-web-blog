@@ -110,7 +110,7 @@
   #post{
 
    /deep/ img{
-     margin: 0 auto 30px auto;
+     margin: 40px auto ;
      display: block;
    }
 
@@ -130,6 +130,11 @@
 
     /deep/  p{
       text-align: justify;
+    }
+
+     /deep/  li{
+      text-align: justify;
+      margin-bottom:5px;
     }
   }
 
@@ -249,13 +254,9 @@
     padding: 60px 15%;
   }
 
-  //  /deep/ pre {
-  //   background: $grey-light;
-  //   font-size: 16px;
-  //   padding: .2em .4em;
-  //   color: $grey-dark;
-  //   margin: 30px 0;
-  //  }
+   /deep/ pre {
+    margin: 40px 0;
+   }
 
 
 
