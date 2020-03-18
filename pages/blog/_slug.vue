@@ -118,6 +118,7 @@
        font-family: "IBM Plex Mono", monospace;
        text-transform: uppercase;
        margin-top: 80px;
+       margin-bottom: 20px;
     }
 
    /deep/   h3{
@@ -125,6 +126,16 @@
        text-transform: capitalize;
        margin-top: 60px;
        font-size: 1.50rem;
+       margin-bottom: 20px;
+
+    }
+
+      /deep/   h4{
+       font-family: "IBM Plex Mono", monospace;
+       text-transform: capitalize;
+       margin-top: 40px;
+       font-size: 1.20rem;
+       margin-bottom: 20px;
 
     }
 
