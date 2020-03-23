@@ -2,7 +2,10 @@
   <footer class="container-fluid">
     <div class="imp-section">
       <div class="inner">
-        <p class="subscribe-cta">Stay updated!</p>
+        <p class="subscribe-cta">
+            {{ $t("footerBlog.optinCTA1") }}
+            {{ $t("footerBlog.optinCTA2") }}
+        </p>
 
         <div ref="aWeberScriptHolder">
           <form
@@ -67,13 +70,13 @@
                   style="text-align: center"
                 >
                   <p>
-                    We respect your
+                     {{ $t("footerBlog.privacy") }}
                     <a
                       title="Privacy Policy"
                       href="https://www.aweber.com/permission.htm"
                       target="_blank"
                       rel="nofollow"
-                      >email privacy</a
+                      >  {{ $t("footerBlog.privacy2") }}</a
                     >
                   </p>
                   <div class="af-clear"></div>
@@ -92,11 +95,14 @@
     </div>
 
     <div class="row align-items-center footer-bottom">
-      <div class="col-lg-7 col-xl-9 ">
-        Made with <a href=" https://nuxtjs.org/" target="_blank">Nuxt </a>and
-        hosted on
-        <a href="https://www.netlify.com/ " target="_blank">Netlify </a> - Wanna
-        see how? <a href=" https://nuxtjs.org/"> Check my blog post </a>
+      <div class="col-sm-9 text-left ">
+        {{ $t("footer.made") }} <a href=" https://nuxtjs.org/" target="_blank">Nuxt </a>  {{ $t("footer.hosted") }}
+        <a href="https://www.netlify.com/" target="_blank">Netlify </a> -
+
+        {{ $t("footer.how") }}
+        <nuxt-link :to="getPostLink()" >
+                  {{ $t("footer.check") }}
+        </nuxt-link>
       </div>
 
       <div class="col-lg-5 col-xl-2 copy ">
@@ -150,6 +156,17 @@ export default {
         left: 0,
         behavior: "smooth"
       });
+    },
+
+      getPostLink(){
+      switch (this.$i18n.locale) {
+         case 'en':
+              return "vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-1"
+           break;
+          case 'es':
+           return "generador-de-sitios-estaticos-con-vue-nuxt-y-markdown-vamos-a-crear-un-blog-sin-servidor-parte-1"
+           break;
+       }
     },
 
     createAweberScript() {
@@ -249,6 +266,10 @@ footer {
 
   .copy {
     text-align: right;
+  }
+
+  .subscribe-cta{
+    text-align: center;
   }
 
   .imp-section {

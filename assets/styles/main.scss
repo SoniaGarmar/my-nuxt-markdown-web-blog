@@ -39,7 +39,7 @@ a{
   border-radius: 0px;
   text-decoration: none;
   padding: 20px 40px;
-  font-size: 18px;
+  font-size: 20px;
   text-transform: uppercase;
   letter-spacing: 4px;
 
@@ -54,7 +54,8 @@ a{
 .button--default {
   border: 1px solid $base-color;
   background-color: $base-color;
-  color: $white;
+  color: $black;
+  font-weight: bold;
   &:hover{
     color: $base-color;
     background-color: transparent;

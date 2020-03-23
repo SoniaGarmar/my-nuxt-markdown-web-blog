@@ -4,7 +4,7 @@
    "greeting-do" : " I code. <br> I design. <br> I solve problems. <br>",
    "message":[
               "I collaborate with companies and teams to create first class web and mobile apps that add value to their business.",
-              "<br> <br> If what is already in the market doesn't fit your needs, I'll create it for your.  <br>  <br>",
+              "<br> <br> If what is already in the market doesn't fit your needs, I'll create it for you.  <br>  <br>",
               "<span class='underline'> You know what you need, I know how to build it. </span>"
             ],
 
@@ -12,8 +12,19 @@
   },
 
   "footer":{
-    "note": "Created with Vuejs and Nuxtjs"
+    "made": "Made with",
+    "hosted": "and hosted on",
+    "how":"Wanna see how?",
+    "check": "Check my blog post"
   },
+
+  "footerBlog":{
+    "optinCTA1": "I write about code.",
+    "optinCTA2": "Subscribe to stay updated",
+    "privacy": "I respect your",
+    "privacy2": "email privacy"
+  },
+
   "navbar":{
     "home": "Home",
     "me": "Me",
@@ -23,8 +34,8 @@
   },
 
   "me": [
-      "I’m a freelance DEVELOPER with a pinch of DESIGNER.",
-      "I’ve been designing and developing websites, web applications, mobile apps, and other digital creations for many years.",
+      "I'm a freelance DEVELOPER with a pinch of DESIGNER.",
+      "I've been designing and developing websites, web applications, mobile apps, and other digital creations for more than 20 years.",
       "I got my first computer, a Commodore 64, in the 80’s. I was 10 years old. And I felt in love with technology. ",
       "Since then, I have always been playing with computers. First as a hobby, then as a job.",
       "I started to use the Internet back in 1995, when (at least in Spain) it was only accessible from Universities and it took you literally minutes to ",
@@ -40,9 +51,108 @@
       "Something I keep doing because the one of the most important things in this profession is to never stop learning."
 
     ],
+   "meTitle": "Me",
+
+  "goals":{
+    "goal": "My goal",
+    "tools" : "My tools",
+    "motivation": "My motivation",
+    "goalText": "To help you turn your ideas into a reality using the magic of code.",
+    "toolsText":"Problem solving skills, extensive knowledge and experience, dedication, and creativity.",
+    "motivationText": "Getting you to say 'I love it!' at the end of the project."
+  },
+
+  "services":{
+    "title": "What I do",
+    "subtitle": "I do a bunch of different things and most of them live on the Internet.",
+    "webApp": {
+      "title": "Web Apps",
+      "text" : [
+        "If you need a website with extra functionality and server-side programming, no problem. I can take care of both back and front-end.",
+        "Tell me what you need and I will build it for you."
+      ]
+    },
+
+    "mobileApp": {
+      "title": "Mobile Apps",
+      "text" : [
+        "A game? A rewards system for your retail business? A geolocation based app?... Whatever you need.",
+        "Let me know what's in your mind and I will find the best way of bringing your project to live."
+      ]
+    },
+
+    "web": {
+      "title": "Custom web sites",
+      "text" : [
+        "I create hand-crafted websites to make you stand out from the crowd.",
+        "If you only need to implement an already done design, I will do it. If you also need the design, I can also take care of it."
+      ]
+    },
 
 
-  "contact":{
+    "software": {
+      "title": "Custom software",
+      "text" : [
+        "Need a custom piece of software to increase the productivity of your business, improve your organization or any other purpose?",
+        "I'll find the best way of developing the software solution that better solve your problems."
+      ]
+    }
+  },
+
+  "stack" : [
+    "I will work side by side with you to design, prototype and finally build the custom web application that better fits your needs.",
+    "I work comfortably on both FRONT-END and BACK-END systems alike.",
+    "Here are a few technologies I've been working with recently:",
+    "JavaScript (ES6+), HTML & (S)CSS, Vue / Nuxt, Angular, Node.js / Express, .NET",
+    "Other technologies I know:",
+    "Ruby on Rails, PHP / Laravel, Java, Ionic, React / React Native"
+  ],
+
+  "workWith": [
+    "Currently I WORK WITH:",
+    "Business and individuals",
+    "in need of a website, a web app, a mobile app or any other digital solution.",
+    "Agencies and teams",
+    "in need of a pair of digital hands to help them out.",
+    "If you have a project in mind or need a developer to collaborate with your team, I’m currently available for freelance work."
+  ],
+  "workWithCTA":" LET'S CREATE SOMETHING AWESOME!",
+
+  "porfolio":{
+     "title": "WHAT I HAVE DONE",
+     "text": [
+       "Well… Due to confidentiality agreements or to the nature of the project, I can not show here most of the things I do.",
+       "But if you want to know more about my work, please",
+       "drop me a line",
+       "I will be pleased to show you some stuff."
+     ]
+  },
+
+
+  "reviews":{
+    "mario":[
+      "Sonia has created for us a couple of websites, a mobile app and a little CRM to track the sales ativity. And the professional relationship with her",
+      "can only be qualified as impeccable.",
+      "Professional, worried about your problems and always participating in definig the problem and finding the best solution. She is very well prepared in the technical subjects, thorough in her work, and responsible."
+
+
+    ],
+    "almudena":[
+      "Ms. Sonia García developed a web application for our company, custom created for our sector",
+      "that greatly facilitates the daily management of our business, for us and for our franchises.",
+      "Always available, approachable, and always willing to listen to your needs."
+    ],
+    "jose": [
+       "Working with Sonia has been very satisfactory in every moment. She has met the deadlines for all the assigned tasks and she has also perfectly integrated into the team",
+       "We are very happy with her work and will for sure keep counting on her."
+    ]
+  },
+
+  "contact": {
+    "title": " GET IN TOUCH",
+    "cta" : [
+      "Want to say hello?" ,
+      "Interested in working together?"],
     "button": "Drop me a line"
   },
 

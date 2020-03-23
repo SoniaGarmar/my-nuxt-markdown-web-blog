@@ -3,9 +3,13 @@
   <footer class="container-fluid">
     <div class="row align-items-center">
       <div class="col-sm-9 text-left ">
-        Made with <a href=" https://nuxtjs.org/" target="_blank">Nuxt </a>and hosted on <a href="https://www.netlify.com/ " target="_blank">Netlify </a> -
+        {{ $t("footer.made") }} <a href=" https://nuxtjs.org/" target="_blank">Nuxt </a>  {{ $t("footer.hosted") }}
+        <a href="https://www.netlify.com/" target="_blank">Netlify </a> -
 
-        Wanna see how? <a href=" https://nuxtjs.org/"> Check my blog post </a>
+        {{ $t("footer.how") }}
+        <nuxt-link :to="getPostLink()" >
+                  {{ $t("footer.check") }}
+        </nuxt-link>
       </div>
 
       <div class="col-sm-2 copy ">
@@ -27,7 +31,7 @@
 
     data: function() {
       return {
-        isVisible: true
+        isVisible: true,
       };
     },
 
@@ -42,6 +46,17 @@
             this.isVisible = false;
           }
         }
+      },
+
+      getPostLink(){
+        switch (this.$i18n.locale) {
+           case 'en':
+                return "blog/vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-1"
+             break;
+            case 'es':
+             return "es/blog/generador-de-sitios-estaticos-con-vue-nuxt-y-markdown-vamos-a-crear-un-blog-sin-servidor-parte-1"
+             break;
+         }
       },
 
       backToTop () {

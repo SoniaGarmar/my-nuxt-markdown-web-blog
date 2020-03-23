@@ -57,7 +57,7 @@
           <h2>
             <blob class="blob" />
             <span class="blob-text">
-              ME
+              {{ $t("meTitle") }}
             </span>
           </h2>
 
@@ -95,13 +95,13 @@
     <div class="container-fluid imp-section">
       <div class="inner">
         <p>
-          <span class="underline"> MY GOAL </span>: To help you turn your ideas
-          into a reality using the magic of code.
+          <span class="underline text-uppercase"> {{ $t("goals.goal") }} </span>:  {{ $t("goals.goalText") }}
         </p>
-        <p><span class="underline"> MY TOOLS </span>: Knowledge and passion.</p>
         <p>
-          <span class="underline">MY MOTIVATION</span>: Happiness. A happy
-          customer makes me a happy developer.
+          <span class="underline text-uppercase">  {{ $t("goals.tools") }} </span>:  {{ $t("goals.toolsText") }}
+        </p>
+        <p>
+          <span class="underline text-uppercase">  {{ $t("goals.motivation") }} </span>:  {{ $t("goals.motivationText") }}
         </p>
 
         <div class="d-flex justify-content-center bottom-box">
@@ -119,44 +119,27 @@
           <h2>
             <blob class="blob" />
             <span class="blob-text">
-              WHAT I DO
+               {{ $t("services.title") }}
             </span>
 
             <p class="subheading">
-              I do a bunch of different things and most of them live on the
-              Internet.
+              {{ $t("services.subtitle") }}
             </p>
           </h2>
         </div>
 
-        <div class="col-lg-6  services-text ">
-           <div class="service-box">
-              <div class="inner">
-                <h3>
-                CUSTOM WEB SITES
-              </h3>
-              <p>
-                I create HAND-CRAFTED websites to make you stand out from the crowd.
-                If you only need to implement an already done design, my left brain
-                will code it for you. If you also need the design, I can also do it
-                for you.
-              </p>
-              </div>
-           </div>
-        </div>
+
 
         <div class="col-lg-6  services-text  ">
           <div class="service-box">
             <div class="inner">
               <h3>
-                WEB APPLICATIONS
+                {{ $t("services.webApp.title") }}
               </h3>
               <p>
-                If you need a website with extra functionality and server-side
-                programming, No problem. I can take care of both back-end and
-                front-end. Tell me what you need and I will design and code it for
-                you. I will work side by side with you to design, prototype and
-                finally build your custom web application.
+                 <span v-html="$t('services.webApp.text[0]')"></span>
+                 <br>
+                 <span v-html="$t('services.webApp.text[1]')"></span>
               </p>
             </div>
           </div>
@@ -166,75 +149,80 @@
           <div class="service-box">
              <div class="inner">
               <h3>
-                MOBILE APPS
+                  {{ $t("services.mobileApp.title") }}
               </h3>
               <p>
-                A game? a rewards system for your retail business? a location based
-                app? Whatever you need. Let me know what's in your mind and I will
-                find the best way of doing it. If you already have the design and
-                just need someone to code it, no problem, I will bring your project
-                to live.
+               <span v-html="$t('services.mobileApp.text[0]')"></span>
+                 <br>
+                 <span v-html="$t('services.mobileApp.text[1]')"></span>
               </p>
             </div>
           </div>
+        </div>
+
+          <div class="col-lg-6  services-text ">
+           <div class="service-box">
+              <div class="inner">
+                <h3>
+                  {{ $t("services.web.title") }}
+              </h3>
+              <p>
+               <span v-html="$t('services.web.text[0]')"></span>
+                 <br>
+                <span v-html="$t('services.web.text[1]')"></span>
+              </p>
+              </div>
+           </div>
         </div>
 
         <div class="col-lg-6  services-text">
            <div class="service-box">
               <div class="inner">
                 <h3>
-                  CUSTOM SOFTWARE
+                  {{ $t("services.software.title") }}
                 </h3>
                 <p>
-                  Need a custom piece of software to increase the productivity of your
-                  business, improve your organization or any other purpose? I'll think
-                  about the best way of doing it and develop the software solution
-                  that better solve your problems
+                <span v-html="$t('services.software.text[0]')"></span>
+                 <br>
+                <span v-html="$t('services.software.text[1]')"></span>
                 </p>
               </div>
            </div>
         </div>
 
         <div class="col-12  services-text margin-b-md ">
+          <p v-html="$t('stack[0]')"></p>
+          <p v-html="$t('stack[1]')"></p>
           <p>
-            I work comfortably on both FRONT-END and BACK-END systems alike.
-          </p>
-
-           <p>
-            Here are a few technologies I've been working with recently: <br />
-            <span class="underline">
-              JavaScript (ES6+), HTML & (S)CSS, Vue / Nuxt, Angular, Node.js /
-              Express, .NET
-            </span>
+            <span v-html="$t('stack[2]')"></span> <br />
+            <span class="underline" v-html="$t('stack[3]')"> </span>
           </p>
           <p>
-            Other technologies I know: <br />
-            <span class="underline">
-              Ruby on Rails, PHP / Laravel, Java, Ionic, React / React Native
-            </span>
+             <span v-html="$t('stack[4]')"></span> <br />
+            <span class="underline" v-html="$t('stack[5]')"></span>
           </p>
         </div>
+
       </div>
     </div>
 
     <div class = "container-fluid imp-section">
       <div class="inner">
         <p class="smaller-imp-text">
-            <span > Currently I WORK WITH: </span> <br />
-            <span class="font-weight-bold">Business and individuals</span> in need of a
-            website, a web application, a mobile app or any other digital
-            creation. <br />
-            <span class="font-weight-bold">Agencies and teams</span> in need of a pair of
-            digital hands to help them out. <br />
+            <span v-html="$t('workWith[0]')"></span> <br />
+            <span class="font-weight-bold" v-html="$t('workWith[1]')"></span>
+            <span v-html="$t('workWith[2]')"></span> <br />
+            <span class="font-weight-bold" v-html="$t('workWith[3]')"></span>
+            <span v-html="$t('workWith[4]')"></span> <br />
         </p>
 
 
         <div class="margin-md">
-          <p class="underline">If you have a project in mind, I’m currently available for freelance work.<p>
+          <p class="underline" v-html="$t('workWith[5]')"><p>
             <div class="d-flex justify-content-center bottom-box">
                 <a class="btn button--default" href="mailto:hxexlxlo@cxoxdexwxithsxonxia.com" onmouseover="this.href=this.href.replace(/x/g,'')">
-                  LET'S CREATE SOMETHING AWESOME!
-                  </a>
+                 {{$t('workWithCTA')}}
+                </a>
             </div>
         </div>
       </div>
@@ -247,13 +235,15 @@
           <h2>
             <blob class="blob" />
             <span class="blob-text">
-              WHAT I HAVE DONE
+               {{$t('porfolio.title')}}
             </span>
           </h2>
 
           <p>
-            Well… Due to confidentiality agreements or to the nature of the project, I can not show here most of the things I do.
-            But if you want to know more about my work, please <span class="underline">drop me a line </span>. I will be pleased to show you some stuff.
+            <span  v-html="$t('porfolio.text[0]')"></span>
+            <span  v-html="$t('porfolio.text[1]')"></span>
+            <span class="underline" v-html="$t('porfolio.text[2]')"></span>
+              <span  v-html="$t('porfolio.text[3]')"></span>
           </p>
         </div>
 
@@ -265,9 +255,10 @@
                <a href=" http://www.solucionesdelavado.com/">Simfonia Liquida SL</a>
               </h3>
               <p>
-                Sonia ha creado para nosotros varias páginas web, app movil, pequeño crm de actividad comercial y la relación profesional
-                con ella sólo se puede calificar de intachable. <br>
-                Profesional, preocupada por tu problema real y siempre partícipe en el enfoque del mismo y la búsqueda de la mejor solución. Técnicamente preparadísima, metódica y responsable.
+                 <span  v-html="$t('reviews.mario[0]')"></span>
+                 <span  v-html="$t('reviews.mario[1]')"></span>
+                 <br>
+                 <span  v-html="$t('reviews.mario[2]')"></span>
               </p>
             </div>
           </div>
@@ -281,9 +272,10 @@
                 <a href=" http://www.egar365.es/">Egar365, SL</a>
               </h3>
               <p>
-                La Sra. Sonia Garcia ha desarrollado una aplicación informática para nuestra empresa, diseñada a medida para nuestro sector, que nos ha facilitado enormemente la gestión diaria de nuestra empresa
-                 así como la de nuestros franquiciados. <br>
-                 Siempre disponible, cercana y dispuesta a escuchar tus necesidades.
+                 <span  v-html="$t('reviews.almudena[0]')"></span>
+                 <span  v-html="$t('reviews.almudena[1]')"></span>
+                 <br>
+                 <span  v-html="$t('reviews.almudena[2]')"></span>
               </p>
             </div>
           </div>
@@ -297,9 +289,9 @@
                  <a href=" http://www.ikrut.com/">Zodo Ltd</a>-
               </h3>
               <p>
-                El trabajo con Sonia ha sido muy satisfactorio en todo momento. Ha cumplido tiempos en todas las tareas asignadas y además se ha integrado en el equipo perfectamente.
+                <span  v-html="$t('reviews.jose[0]')"></span>
                 <br>
-                Hemos quedado muy contentos con su trabajo y por supuesto vamos a seguir contando con ella.
+                <span  v-html="$t('reviews.jose[1]')"></span>
               </p>
             </div>
           </div>
@@ -313,12 +305,12 @@
         <div class="inner">
           <div class="d-flex flex-column justify-content-center">
             <h2 class="underline text-center">
-                GET IN TOUCH
+                 {{$t('contact.title')}}
             </h2>
 
             <p class="text-center margin-t-md">
-              Want to say hello? <br>
-              Interested in working together?
+               <span  v-html="$t('contact.cta[0]')"></span> <br />
+               <span  v-html="$t('contact.cta[1]')"></span>
             </p>
 
             <div class="d-flex justify-content-center bottom-box">
@@ -391,12 +383,12 @@ export default {
       color: $white;
       & .greeting {
         position: relative;
-        font-size: 3.9rem;
-        line-height: 3.9rem;
+        font-size: 3.5rem;
+        line-height: 3.5rem;
         z-index: 5;
         .smaller {
-          font-size: 2.9rem;
-          line-height: 2.9rem;
+          font-size: 2.5rem;
+          line-height: 2.5rem;
         }
         .special {
           color: $base-color;
@@ -406,8 +398,8 @@ export default {
       & .message {
         font-family: "IBM Plex Mono", monospace;
         color: $white;
-        font-size: 2rem;
-        line-height: 2.2rem;
+        font-size: 1.8rem;
+        line-height: 2rem;
         margin-top: 50px;
       }
 

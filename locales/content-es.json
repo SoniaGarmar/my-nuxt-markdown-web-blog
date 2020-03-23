@@ -1,15 +1,27 @@
 {
   "header":{
     "greeting-hello":"Hola, soy Sonia",
-    "greeting-do" : "Programo. <br> Diseño. <br> Resuelvo problemas. <br>",
-    "message":["Colaboro con empresa y equipos para crear aplicaciones web y móvil que añader valor a tu negocio.",
-               "<br> <br> Si las soluciones que hay en el mercado no cubren tus necesidades, yo puedo una que las cubra.  <br>  <br>",
+    "greeting-do" : "Programo. <br> Diseño. <br> Y resuelvo problemas. <br>",
+    "message":["Colaboro con empresa y equipos para crear aplicaciones web y móvil que añader valor a su negocio.",
+               "<br> <br> Si las soluciones que hay en el mercado no cubren tus necesidades, yo puedo crear una que las cubra.  <br>  <br>",
                "<span class='underline'> Tú sabes lo que necesitas. Yo sé como crearlo </span>"],
-     "button": "Vamos a trabajar juntos"
-    },
-  "footer":{
-    "note": "Creado con Vuejs y Nuxtjs"
+     "button": "Trabajemos juntos"
   },
+
+  "footer":{
+    "made": "Hecho con",
+    "hosted": "y alojado en ",
+    "how":"¿Quieres saber cómo?",
+    "check": "Te lo explico en este post"
+  },
+
+  "footerBlog":{
+    "optinCTA1": "Escribo sobre programación.",
+    "optinCTA2": "Suscríbete para estar al día",
+    "privacy": "Respeto",
+    "privacy2": "tu privacidad"
+  },
+
   "navbar":{
     "home": "Inicio",
     "me": "Yo",
@@ -18,9 +30,135 @@
     "contact": "¿Quieres que hablemos?"
   },
 
+  "me": [
+    "Soy una PROGRAMADORA freelance con algo de DISEÑADORA",
+    "Llevo más de 20 años diseñando y desarrollando sitios web, aplicaciones web, aplicaciones móviles y otras soluciones digitales.",
+    "Me compraron mi primer ordenador, un Commodore 64, en los 80. Tenía 10 años.  Y ahí fue cuando me enamoré de la technología.",
+    "Desde entonces no he dejado de jugar con los ordenadores. Primero como aun hobby, luego como mi trabajo.",
+    "Empecé a utilizar Internet en el año 1995, cuando (por lo menos en España) solo estaba disponible en universidades y tardabas minutos (literlamente) en conectarte",
+    "(para perder la conexión unos minutos después). Ahora puede parecer una pesadilla, pero en aquel momento era un sueño hecho realidad.",
+    "Las cosas han cambiado mucho desde esos días de pantallas en blanco y negro y módems ruidosos, y también ha cambiado mi trabajo.",
+    "Cuando Internet evolucionó y la necesidad de tener un sitio web o una aplicación web (y ahora también una aplicaión móvil) empezó a crecer, ",
+    "empecé a interesarme por ese tipo de programación, lo que acabó siendo mi especialización.",
+    "Con los años, otros aspectos menos técnicos de Internet llamaron también mi atención y empecé a aprender SEO y diseño UX/UI",
+    "lo que acabó convirtiéndose en un conocimiento complementario que me permite ofrecer un servicio integral que va más allá de crear applicaciones funcionales.",
+    "Creo todas mis soluciones digitales teniendo en cuanta no solo aspectos técnicos sino también la usabilidad y el SEO (cuando es necesario.)",
+    "Por lo que se refiere a mi formación, estudié Ingeniería Informática, pero me gustaría añadir que la mayoría de todo lo que sé sobre programación",
+    "lo he aprendido de manera autodidacta a lo largo de todos estos años, pasando muchas horas estudiando y programando (sobretodo programando) ",
+    "algo que sigo haciendo porque una de las cosas más importantes en esta profesión es nunca dejar de aprender."
+
+  ],
+ "meTitle": "Yo",
+
+ "goals":{
+  "goal": "Mi objetivo",
+  "tools" : "Mis herramietas",
+  "motivation": "Mi motivación",
+  "goalText": "Ayudarte a convertir tus ideas en realidad utilizando la mágia del código",
+  "toolsText":"Habilidad para resolver problemas, amplios conocimientos y experiencia, dedicación y creatividad.",
+  "motivationText": "Que al final del proyecto puedas decir '¡Me encanta!.'"
+},
+
+"services":{
+  "title": "Lo que hago",
+  "subtitle": "Hago diferentes cosas pero casi todas ellas viven en  Internet.",
+
+  "webApp": {
+    "title": "Aplicaiones Web",
+    "text" : [
+      "Si necesitas una web con funcionalidades adicionales y programación en el lado del servidor, no hay problema. Yo me puedo encargar tanto del 'front' como del `back' ",
+      "Dime lo que necesitas y lo crearé para ti"
+    ]
+  },
+
+  "mobileApp": {
+    "title": "Aplicaciones Móvil",
+    "text" : [
+      "¿Un juego? ¿Un sistema de fidelización para tu negocio? ¿Una app con geolocalización?... Lo que necesites.",
+      "Cuéntame lo que tienes en mente y yo encontraré la mejor manera de hacerlo realidad."
+    ]
+  },
+
+  "web": {
+    "title": "Webs a medida",
+    "text" : [
+      "Si lo que necesitas es una web, crearé una que te hará destacar sobre los demás.",
+      "Si sólo necesitas implementar un diseño que ya tienes, también puedo hacerlo."
+    ]
+  },
+
+
+  "software": {
+    "title": "Programación a medida",
+    "text" : [
+      "¿Necesitas un programa que te ayude a aumentar la productividad de tu negocio, mejorar tu empresa o cualquier otra cosas?",
+      "Déjalo en mis manos. Crearé el software que mejor solucione tus porblemas."
+    ]
+  }
+},
+
+  "stack" : [
+    "Trabajaré codo con codo contigo para diseñar y programar el producto digital que mejor se adapte a tus necesidades.",
+    "Me puedo encargar tanto del FRONT-END como del BACK-END, ofreciéndote una solución completa.",
+    "Estas son algunas de las tecnologías con las que he trabajdo recientemente",
+    "JavaScript (ES6+), HTML & (S)CSS, Vue / Nuxt, Angular, Node.js / Express, .NET",
+    "Y estas, otras technologías que conozco:",
+    "Ruby on Rails, PHP / Laravel, Java, Ionic, React / React Native"
+  ],
+
+  "workWith": [
+    "Trabajo con:",
+    "Empresas y  personas físicas",
+    "que necesitan una web, una aplicaión web, una aplicación móvil o cualquier otra solución digital.",
+    "Agencias y equipos",
+    "que necesitan que les echen un a mano en temas de programación.",
+    "Si tienes un proyecto en mente o necesitas un/a desarrollador/a que colabore con tu equipo, estoy disponible como programadora freelance."
+  ],
+  "workWithCTA":" ¡VAMOS A CREAR ALGO GENIAL!",
+
+  "porfolio":{
+     "title": "LO QUE HE HECHO",
+     "text": [
+       "Bien... Por razones de confidencialidad o debido a la naturaleza del proyecto, No puedo mostrar aquí la moyoría de las cosas que hago.",
+       "Pero si quieres saber más sobre el tipo de proyectos en que he trabajado, por favor,",
+       "mándame un email.",
+       "Estaré encantada de enseñarte algunas de las cosas que he hecho."
+     ]
+  },
+
+
+  "reviews":{
+    "mario":[
+      "Sonia ha creado para nosotros varias páginas web, app movil y un pequeño crm de actividad comercial, y la relación profesional",
+      " con ella sólo se puede calificar de intachable.",
+      "Profesional, preocupada por tu problema real y siempre partícipe en el enfoque del mismo y la búsqueda de la mejor solución. Técnicamente preparadísima, metódica y responsable."
+
+    ],
+    "almudena":[
+       "La Sra. Sonia García ha desarrollado una aplicación informática para nuestra empresa, diseñada a medida para nuestro sector, ",
+       "que nos ha facilitado enormemente la gestión diaria de nuestra empresa así como la de nuestros franquiciados." ,
+       "Siempre disponible, cercana y dispuesta a escuchar tus necesidades."
+
+    ],
+    "jose": [
+      "El trabajo con Sonia ha sido muy satisfactorio en todo momento. Ha cumplido tiempos en todas las tareas asignadas y además se ha integrado en el equipo perfectamente.",
+      "Hemos quedado muy contentos con su trabajo y por supuesto vamos a seguir contando con ella."
+
+    ]
+  },
+
+  "contact": {
+    "title": "CONTACTA CONMIGO",
+    "cta" : [
+      "¿Quieres saludarme?" ,
+      "¿Estás interesado en que trabajemos juntos?"],
+    "button": "Escríbeme unas líneas"
+  },
+
   "blog":{
     "header" : "Mi Blog",
-    "tagline": "Escribo sobre código",
+    "tagline": "Escribo sobre programación",
     "published": "Fecha de publicación:"
   }
+
 }
