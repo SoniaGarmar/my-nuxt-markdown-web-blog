@@ -4,7 +4,7 @@
           <div class="d-flex align-items-center justify-content-center  inner-wrapper">
             <div class="header-msg">
               <h1 class="heading">
-                <blob class="blob" />
+                <!-- <blob class="blob" /> -->
                 <h1>{{title}}</h1>
                 <br>
                 <p class="smaller"> {{description}} </p>
@@ -104,7 +104,7 @@
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "../../assets/styles/main.scss";
 
   #post{

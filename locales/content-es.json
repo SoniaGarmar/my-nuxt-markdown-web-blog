@@ -5,7 +5,7 @@
     "message":["Colaboro con empresa y equipos para crear aplicaciones web y móvil que añader valor a su negocio.",
                "<br> <br> Si las soluciones que hay en el mercado no cubren tus necesidades, yo puedo crear una que las cubra.  <br>  <br>",
                "<span class='underline'> Tú sabes lo que necesitas. Yo sé como crearlo </span>"],
-     "button": "Trabajemos juntos"
+     "button": "¡Trabajemos juntos!"
   },
 
   "footer":{
@@ -64,7 +64,7 @@
   "subtitle": "Hago diferentes cosas pero casi todas ellas viven en  Internet.",
 
   "webApp": {
-    "title": "Aplicaiones Web",
+    "title": "Aplicaciones Web",
     "text" : [
       "Si necesitas una web con funcionalidades adicionales y programación en el lado del servidor, no hay problema. Yo me puedo encargar tanto del 'front' como del `back' ",
       "Dime lo que necesitas y lo crearé para ti"

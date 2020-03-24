@@ -1,7 +1,7 @@
 ---
 name: 'vue static site generator nuxt and markdown blog part 2'
 title: Vue Static Site Generator with Nuxt and Mardown. Let's Create a Serverless Blog. Part 2
-date: March 17 2020
+date: March 24 2020
 slug: 'vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-2'
 slugTrans: 'generador-de-sitios-estaticos-con-vue-nuxt-y-markdown-vamos-a-crear-un-blog-sin-servidor-parte-2'
 description:  This website you are visiting have been created using Nuxt and Markdown and is serving SEO-friendly blog posts without the need of a server. Want to learn how to do it? Keep reading...
@@ -19,7 +19,7 @@ In [Part 1 of this article](vue-static-site-generator-with-nuxt-and-markdown-cre
 In this part we will add internationalization.
 
 You can skip this part if your site does not need to be multilingual.
-In part 3...... ////
+In part 3//////
 
 **Index**
 
@@ -515,7 +515,7 @@ There is just one crucial thing missing, generating the static pages and publish
 
 As what with we have learned so far you have all the crucial content to create a static site, feel free to skip to the final steps: generating the static sites and deployment. /////
 
-
+If you can to see how I created the home page of this website, I'm going to show you in [Part 3 of this article](vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-3)
 ------
 
 

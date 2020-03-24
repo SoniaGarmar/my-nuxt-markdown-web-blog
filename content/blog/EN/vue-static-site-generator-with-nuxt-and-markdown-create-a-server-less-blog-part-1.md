@@ -1,7 +1,7 @@
 ---
 name: 'vue static site generator nuxt and markdown blog part 1'
 title: Vue Static Site Generator with Nuxt and Mardown. Let's Create a Serverless Blog. Part 1
-date: March 17 2020
+date: March 21 2020
 slug: 'vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-1'
 slugTrans: 'generador-de-sitios-estaticos-con-vue-nuxt-y-markdown-vamos-a-crear-un-blog-sin-servidor-parte-1'
 description:  This website you are visiting have been created using Nuxt and Markdown and is serving SEO-friendly blog posts without the need of a server. Want to learn how to do it? Keep reading...
