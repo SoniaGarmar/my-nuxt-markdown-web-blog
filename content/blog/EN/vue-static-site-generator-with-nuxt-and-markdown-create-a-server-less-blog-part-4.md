@@ -33,7 +33,7 @@ In part 3//////
 - [Creating a Language Switcher](#switcher)
   [Making The Blog Multilingual](#blog-locale)
 - [Brief Intro to Nuxt](#nuxt-intro)
-  - [Structure of a Nuxt Project](#structure)
+- [Structure of a Nuxt Project](#structure)
 
 
 **Complete Project Code**: You can get the source code on <a href="https://github.com/nuxt-community/nuxt-i18n" target="_blank">GitHub </a>
@@ -41,732 +41,412 @@ In part 3//////
 **Prerequisits**: HTML, CSS, JavaScript, Vue.js, and Markdown.
 
 
-<a name="main-style"></a>
+<a name="layout"></a>
 
-## Initial Setup
+## A secondary layout for the blog
 
-I have created some global styles in the styles folder. As this is not a CSS anf HTML tutorial, I'm not going to get into details, but feel free to get the code from the github repo. ////LINK
+I want a clean minimalistic look for my blog. No sidebar, no comments, just a list or grid of posts in the blog homepage, a filter to show only posts of a certain category, and a subscription box to subscribe to my mailing list.
 
-As I'm using Google Fonts, we have to add them. The Nuxt way of doing it is adding the likg to the fonts to the head object of the *nuxt.config.js*.
+In the single blog page, I would like to show only the post and the subscription box.
 
-This is the code to add if you wanto to use th same fonts I do, which are *Montserrat* and *IBM Plex Mono*.
+I'm going to create a new layout for the blog, which will include a simplified menu and the subscription box.
 
-```javascript
-      { 
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Cutive+Mono|Montserrat&display=swap'
-      }
-```
-<img src="/blog-images/my-web-post/35_fonts.png" class="img-fluid" alt="nuxt google fonts">
+Let's create the new layout file in the layout folder and call it *blog.vue*.
 
-The *head* property is used  to add external resources to the HTML *head* tags.
-If you inspect your app with DevTools you will see the link to *GoogleFonts* in the *<head>* section
-
-<img src="/blog-images/my-web-post/36-fonts_nuxt_project.png" class="img-fluid" alt="add google fonts to nuxt static blog">
-
-Now you can use the fonts as usual. I have added the font-family property to the *body* and *html* elements in *main.sccs*.
-
-<img src="/blog-images/my-web-post/fonts.png" class="img-fluid" alt="static site generator nuxt">
-
-Our home page is in *pages/index.vue*, as you might remember.
-
-I'm going to start by creating the *header* section. I'm going to create the animated waves at the bottom on the heading using pure css and svg. 
-
-<img src="/blog-images/my-web-post/waves-home.gif" class="img-fluid" alt="nuxt markdown blog">
-
-As this is something a little special, I'm going to show you how I dis it. So, bear with me if you are interested. Otherwise, feeel free to skip this part.
-
-Inside container, create a new *div*.
-
-```html
-<div id="header" class="waves">
-</div>
-```
-
-
-Now, we need to draw the svg path of the curve we want to draw.
-
-You can use a wage generator tool like  <a href="https://getwaves.io/" target="_blank">GetWaves</a> or draw the path of your curve yourself using something like <a href="https://mavo.io/demos/svgpath/" target="_blank">Mavo</a>
-As this is not a tutorial about svg or curve drawing, I'm going to just paste here the code for my svg wave and the corresponding css.
-
-```html
-<div class="container-fuid waves" id="header">
-
-<svg class="svg-waves" viewBox="0 24 150 28 " preserveAspectRatio="none">
-<defs>
-<path id="wave" d="M-160 44c30 0
-        58-18 88-18s
-        58 18 88 18
-        58-18 88-18
-        58 18 88 18
-        v44h-352z"
-/>
-</defs>
-<g class="wave-one">
-  <use xlink:href="#wave" x="50" y="0" fill="#ff4265" />
-</g>
-
-<g class="wave-two">
-  <use xlink:href="#wave" x="50" y="4" fill="#fff" />
-</g>
-
-</svg>
-  
-</div>
-```
-
-```css
- @import '../assets/styles/main.scss';
-
-#header{
-     background-color: $black;
-     min-height: 100vh;
-     padding-top: 100px;
-}
-
-.waves {
-  display: block;
-  position: relative;
-  width: 100%;
-  height: auto;
-  background: $black;
-  & > .svg-waves {
-    display: block;
-    width: 100%;
-    height: 60px;
-    max-height: 60px;
-    margin: 0;
-    z-index: 5;
-    bottom: 0;
-    position: absolute;
-    left: 0px;
-    float: left;
-  }
-}
-
-
-.wave-one > use {
-  animation: move-forever2 16s linear infinite;
-  &:nth-child(1) {
-    animation-delay: -2s;
-  }
-}
-
-.wave-two > use {
-  animation: move-forever4 10s linear infinite;
-  &:nth-child(1) {
-    animation-delay: -2s;
-  }
-}
-
-@keyframes move-forever4 {
-  0% {
-    transform: translate(-90px, 0%);
-  }
-  100% {
-    transform: translate(85px, 0%);
-  }
-}
-
-@keyframes move-forever2 {
-  0% {
-    transform: translate(-90px, 0%);
-  }
-  100% {
-    transform: translate(85px, 0%);
-  }
-}
-```
-
-
-Now, in your browser you shouls see something like this.
-
-<img src="/blog-images/my-web-post/waves1.gif" class="img-fluid" alt="svg">
-
-Before we keep working with the header, let's modify the navigation bar and the language switcher.
-
-The first thing we are going to do is create the blob I'm using across all the website as a distinctive decorative element.
-<img src="/blog-images/my-web-post/blob.png" class="img-fluid" alt="blob">
-
-I'm not going to use any logo, so I'm going to replace the Logo component with the Blob component.
-You can delete it and create a new one or rename it. This component will contain a blob and its corresponding animation.
-
-I have generated the blob using  <a href="https://www.blobmaker.app" target="_blank">BlobMaker</a>/.
-You can download the .svg file or, as I have done, inspect the page and copy the code for svg element.
-
-<img src="/blog-images/my-web-post/34_blob.PNG" class="img-fluid" alt="blob generator">
-
-Add the blob to the template
+This is the code. I'm importing and registering the components I want to add to this new layout (and that we have to create) and adding them to the template.
 
 ```html
 <template>
-<svg class="svg-blob"  viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-<g transform="translate(230, 200)">
-<path
-  d="M184.3,-110.4C211,-60.2,185.6,16.2,146.2,64.9C106.8,113.7,53.4,134.8,-11.5,141.5C-76.5,148.2,
-  -153,140.3,-192.4,91.6C-231.8,42.8,-234.1,-46.8,-195.9,-103.7C-157.6,-160.7,-78.8,-184.8,0,
-  -184.8C78.8,-184.8,157.6,-160.7,184.3,-110.4Z"
-  fill="rgba(255, 66, 101, 1)"
-  stroke="none"
-  stroke-width="0">
-</path>
-</g>
-</svg>
-</template>
-```
-And create the corresponding css.
+  <div>
+    <Navbar/>
 
-```css
- @import '../assets/styles/main.scss';
+    <nuxt/>
 
- .svg-blob{
-    width: 200px;
-    height: 200px;
-     -webkit-animation:  blob-animation ease-in-out 12s infinite;
-   -moz-animation: my blob-animationopright ease-in-out 12s infinite;
-   animation:  blob-animation ease-in-out 12s infinite;
- }
-
-
- @keyframes blob-animation {
-  0% {
-		transform: translatey(0px) scale(1);
-	}
-	50% {
-		transform: translatey(-15px) scale(1.05);
-	}
-	100% {
-		transform: translatey(0px) scale(1);
-	}
- }
- ```
-
-
-
-Now, our blob component is ready and we can add it to any of our pages or components.
-Lets' add it to the home page header element, along with some styling.
-
-
-
-
-```html
-<template>
-<div>
-<!--HEADER-->
-<div class="container-fuid waves" id="header">
-<div class="d-flex align-items-center justify-content-center inner-wrapper"  >
-  <div class="header-msg">
-  <p class="greeting">
-  <!--Add the component the regular way and add the class "blob"-->
-  <blob class="blob" />
-  Hi, I'm Sonia <br />
-  <span class="smaller" > 
-  I code <br>
-  ...
-  
-  </span>
-  </p>
-
-</div>
-</div>
-```
-
-```css
-#header{
-   background-color: $black;
-    height: 100vh;
-    padding-top: 80px;
-   & .inner-wrapper {
-     padding: 0 10%;
-     min-height: 100%;
-     & .header-msg {
-      margin-bottom: 40px;
-      font-family: "IBM Plex Mono", monospace;
-      color: $white;
-      & .greeting {
-        position: relative;
-        font-size: 3.5rem;
-        line-height: 3.5rem;
-        z-index: 5;
-        .smaller {
-          font-size: 2.5rem;
-          line-height: 2.5rem;
-        }
-      }
-      
-      & .blob {
-        position: absolute;
-        top: -15px;
-        z-index: -1;
-        left: -95px;
-      }
-     }
-   }
-}
-
-}
-```
- 
-You might be wondering 'What about the translated text for the Spanish language?'. Well' I'm going to use the locale files for that, but first I want to focus only in the design.
-
-Before moving to the rest of the home page sections, let's fix the navigation bar and the language switcher.
-
-First thing will be making the nav bar fixed on scroll. For that, in the NavBar component, let's add the Bootstrap's class *fixed-top* to the *nav* element. I'll also make some little changes to the style and use the locales on the menu items.
-
-<img src="/blog-images/my-web-post/38_menu.png" class="img-fluid" alt="static site generator vue">
-
-
-We'll come back later to the nav bar to add the links. Next thing I wan t to do is to move the language switcher to the navigation bar. Now we have it in the default layout, so let's remove it form there and place it in the the NavBar component, but first we need to import it and register.
-
-```html
-<template>
-  <nav class="navbar navbar navbar-expand-xl navbar-dark default-color fixed-top">
-  <button class="navbar-toggler" type="button"
-    aria-expanded="false" aria-label="Toggle navigation"
-    v-bind:class=" { 'navbarOpen': show }"
-      v-on:click="toggleNavbar">
-    <span class="navbar-toggler-icon" v-bind:class="{ 'opened': show }">
-      <span></span>
-    </span>
-  </button>
-  <div class="collapse navbar-collapse"
-      v-bind:class="{ 'show': show }">
-    <ul class="navbar-nav mr-auto main-items">
-      ...
-    </ul>
-    <ul class="navbar-nav ml-auto nav-flex-icons secondary-items">
-      ....
-    </ul>
-    <!--Add the LangSwitcher component to the NavBar component -->
-    <LangSwitcher/>
+    <Footer/>
   </div>
-  </nav>
 </template>
 
 
-```
-
-
-```javascript
 <script>
-  // import it
-  import LangSwitcher from '@/components/LangSwitcher'
-
-  // register it as a component
+  import Navbar from '@/components/NavbarBlog'
+  import Footer from '@/components/FooterBlog'
   export default {
-    components: {
-      LangSwitcher
-    },
 
-     ...
-}
+    components: {
+      Navbar,
+      Footer
+    }
+  }
 </script>
 
-```
+<style lang="scss">
 
-
-And some style:
-
-```css
-
-  @import '../assets/styles/main.scss';
-
-  nav {
-     background-color:$black;
-     font-family: 'IBM Plex Mono', monospace;
-     font-size: 18px;
-     text-transform: uppercase;
-     letter-spacing: 2px;
-     border-bottom: 1px dashed #1f1f1f;   
-  }
-
-  .nav-item{
-        a{
-           color: $white!important;
-            display: inline-block;
-            &:hover {
-              color: $base-color!important;
-            }
-        }
-  }
-
-.main-items{
-  .nav-item:not(:last-child){
-      color: $white!important;
-      &::after {
-            content: ".";
-          }
-  }
-}
-
-.secondary-items{
-    &::after {
-      content: " . ";
-      color: $white;
-      margin: 8px;
-  }
-}
-
-}
-
+</style>
 
 ```
-I have also added some style to the language switcher.
+
+For the components, you can get the code from GitHub ////
+I will explain how to add th opt-in to the footer but nothing else. There is nothing special in them.
+
+
+But before, let's tell Nuxt that we want to use the new layout with the blog pages.
+For that just use the *layout*  property set to the name of the blog layout in the component where you want to use it.
+
+
+<img src="/blog-images/my-web-post/43_layout.png" class="img-fluid" alt="nuxt markdown blog">
+<br>  
+
+<a name="main-style"></a>
+
+## Adding an opt-in to the footer - Programatically adding a piece of javaScript code to a Nuxt template
+
+I want to add an Aweber signup form to my blog. I'm going to do it in the footer.
+
+The code provided by Aweber has html and javascript. The problem is that you cannot create (```<script> ...... </script>```) tags into the template. If you try to do so you will get an error similat to "Templates should only be responsible for mapping the state to the UI. Avoid placing tags with side-effects in your templates, such as script, as they will not be parsed". The solution is to add the *script* tags containing the Aweber's js programatically.
+
+You can use the same (or a similar) method to add forms from other providers or anytime you need to add external javascript to your templates.
+A quick note: If you just have to add external javascript globally to your site, you have the option of adding the (```<script> ...... </script>```)
+to the head of the index.html file by adding it to the head property of the nuxt.config file. 
+
+Something like this:
+
+```javascript
+head: {
+script: [
+      { innerHTML: 'the aweber code here', type: 'text/javascript', charset: 'utf-8'}
+    ]
+}
+```
+<br/>
+Or you can also save the code in an external javascript file and reference it in the  nuxt.config file.
+<br/>
+
+```javascript
+head: {
+script: [
+      { hid: 'the aweber code here', src: 'file-path', defer: true}
+    ]
+}
+```
+<br/>
+Back to our *FooterBlog.vue* component.
+
+Let's start by adding the html provided by AWeber to the template. We'll do it inside a new div I'm going to reference as aWeberScriptHolder (you can call it whatever you like).
+
+*Refs* are Vue properties used to indicate a reference to HTML elements or child elements in the template so that we can access its DOM node. We need that because we want to manipulte this element in order to append to it the JavaScript code provided by aWeber.
+
+
 
 ```html
-<!-- add the btn-lang class to the button  -->
- <button class="btn btn-lang"
-              v-bind:class="{'selected-lang': lang.code === $i18n.locale }"
-              v-for="(lang, i) in $i18n.locales" :key="`Lang${i}`"
-              @click="changeLanguage(lang.code)">{{lang.name}}
-</button>
-```
+  <div ref="aWeberScriptHolder">
+  <form
+    method="post"
+    class="af-form-wrapper"
+    accept-charset="UTF-8"
+    action="https://www.aweber.com/scripts/addlead.pl"
+  >
+    <div style="display: none;">
+      <input type="hidden" name="meta_web_form_id" value="XXXX" />
+      <input type="hidden" name="meta_split_id" value="" />
+      <input type="hidden" name="listname" value="XXXXX" />
+      <input
+        type="hidden"
+        name="redirect"
+        value="https://www.aweber.com/thankyou-coi.htm?m=text"
+        id="XXXXXXXXXXXX"
+      />
+      <input
+        type="hidden"
+        name="meta_adtracking"
+        value="XXXX"
+      />
+      <input type="hidden" name="meta_message" value="1" />
+      <input type="hidden" name="meta_required" value="email" />
+      <input type="hidden" name="meta_tooltip" value="" />
+    </div>
+    <div id="XXXXXX" class="af-form">
+      <div id="XXXXX" class="af-body af-standards">
+        <div class="af-element">
+          <label class="previewLabel" for="XXXXXX"
+            >Email</label>
+          <div class="af-textWrap">
+            <input
+              class="text"
+              id="XXXXX"
+              type="text"
+              name="email"
+              value=""
+              tabindex="500"
+              onfocus=" if (this.value == '') { this.value = ''; }"
+              onblur="if (this.value == '') { this.value='';} "
+            />
+          </div>
+          <div class="af-clear"></div>
+        </div>
+        <div class="af-element buttonContainer">
+          <input
+            name="submit"
+            class="submit"
+            type="submit"
+            value="Subscribe"
+            tabindex="501"
+          />
+          <div class="af-clear"></div>
+        </div>
+        <div
+          class="af-element privacyPolicy"
+          style="text-align: center"
+        >
+          <p>
+              {{ $t("footerBlog.privacy") }}
+            <a
+              title="Privacy Policy"
+              href="https://www.aweber.com/permission.htm"
+              target="_blank"
+              rel="nofollow"
+              >  {{ $t("footerBlog.privacy2") }}</a
+            >
+          </p>
+          <div class="af-clear"></div>
+        </div>
+      </div>
+    </div>
+    <div style="display: none;">
+      <img
+        src="https://forms.aweber.com/form/displays.htm?id=XXXXXXXXXXXX"
+        alt=""
+      />
+    </div>
+  </form>
+  </div>
+  ```
 
-```css  
-  @import '../assets/styles/main.scss';
+<br/>
+Now, to add the js code we'll create a method in the component to append the Aweber code to the *aWeberScriptHlder* element:
 
-  .lang-switcher {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .btn-lang {
-      font-family: 'IBM Plex Mono', monospace;
-      display: inline-block;
-      border-radius: 0px;
-      text-decoration: none;
-      margin-top:5px;
-      padding: 0 5px;
-      color:$grey-med;
-
-      font-size: 14px;
-      text-transform: none;
-      letter-spacing: 2px;
-  }
-
-   .selected-lang {
-     color:$base-color;
-  }
-
-```
-
-Then,  I made some changes to the responsive menu in order to make it full width and animate the the  open/close icon. Here is the code.
-
-```html
-<!--bind the opened class to the show variable-->
-<nav class="navbar navbar navbar-expand-xl navbar-dark default-color fixed-top">
-<button class="navbar-toggler" type="button"
-  aria-expanded="false" aria-label="Toggle navigation"
-  v-bind:class=" { 'navbarOpen': show }"
-  v-on:click="toggleNavbar">
-
-  <span class="navbar-toggler-icon" v-bind:class="{ 'opened': show }">
-    <span></span>
-  </span>
-...
-
-</nav>
-```
-
-And in the JavaScript, add the *show* variable and  the method that will toggle its value depending on whether the menu is openned or not
+This would be the code:
+<br/>
 
 ```javascript
 
- export default {
-    ...
+  createAweberScript() {
+      // There are two scripts so, create 2 script elements
+      let aWeberScript = document.createElement("script");
+      let aWeberScript2 = document.createElement("script");
 
-    data() {
+      // Set attributes
+      aWeberScript.setAttribute("type", "text/javascript");
+      aWeberScript.setAttribute("language", "javascript");
+
+      aWeberScript2.setAttribute("type", "text/javascript");
+      aWeberScript2.setAttribute("language", "javascript");
+
+      // Create the inline scripts by creating a text node with the javascript provided by Aweber
+      let inlineScript = document.createTextNode(` (function() {
+              var IE = /*@cc_on!@*/false;
+              if (!IE) { return; }
+              if (document.compatMode && document.compatMode == 'BackCompat') {
+                  if (document.getElementById("XXXXXX")) {
+                      document.getElementById("XXXXX").className = 'af-form af-quirksMode';
+                  }
+                  if (document.getElementById("XXXXX")) {
+                      document.getElementById("XXXXX").className = "af-body inline af-quirksMode";
+                  }
+                  if (document.getElementById("XXXXX")) {
+                      document.getElementById("XXXXXX").className = "af-header af-quirksMode";
+                  }
+                  if (document.getElementById("XXXXX")) {
+                      document.getElementById("XXXXX").className = "af-footer af-quirksMode";
+                  }
+              }
+          })();`);
+
+      let inlineScript2 = document.createTextNode(` (function() {
+            function browserSupportsNewWindows(userAgent) {
+                var rules = [
+                    'FBIOS',
+                    'Twitter for iPhone',
+                    'WebView',
+                    '(iPhone|iPod|iPad)(?!.*Safari\/)',
+                    'Android.*(wv|\.0\.0\.0)'
+                ];
+                var pattern = new RegExp('(' + rules.join('|') + ')', 'ig');
+                return !pattern.test(userAgent);
+            }
+
+            if (!browserSupportsNewWindows(navigator.userAgent || navigator.vendor || window.opera)) {
+                document.getElementById('XXXXX').parentElement.removeAttribute('target');
+            }
+        })();`);
+
+
+      // Append the inline javascript to the script element we created before
+      aWeberScript.appendChild(inlineScript);
+      aWeberScript2.appendChild(inlineScript2);
+
+      //Finally apend the script to the html element 
+      this.$refs.aWeberScriptHolder.appendChild(aWeberScript);
+      this.$refs.aWeberScriptHolder.appendChild(aWeberScript2);
+
+
+    }
+
+  ```
+
+<br/>
+Now, call this method in the *mounted()* hook, because we need to wait until the DOM is accessible.
+<br/>
+
+  ```javascript
+  mounted() {
+    this.createAweberScript();
+  },
+```
+<br/>
+Add any needed css and you are done.
+<br/>
+
+
+<a name="index"></a>
+
+## The blog's index page. Adding a filter and a search box
+
+Here I want to show the post's list and a way to filtering them by tag. I'm not going to create a side bar or categories or anything like that: just a post list, a search box(to searc by title) and a filter to filter by tag.
+
+To be able to filter the posts I'm going to add tags to them. So, let's add a new attribute to the posts:
+
+<img src="/blog-images/my-web-post/44_tags.png" class="img-fluid" alt="static site generator blog">
+
+Now, we can show the post's tags.
+
+<img src="/blog-images/my-web-post/45_tags.png" class="img-fluid" alt="vue nuxt markdown">
+
+
+Let's create the search  by title functionality.
+
+### Search by title functionality
+
+First thing we need is the search box:
+
+```html
+    <div>
+      <div class="search-box">
+          <input type="text" v-model="search" placeholder="Search title.."/>
+          <label>Search title:</label>
+       </div>
+    </div>
+```
+<br/>
+Don’t forguet to add the binding to the *search property*  ```v-model="search" ```
+
+Then, we will add a computed property to do the search, which is actually a filtering, and store the filtered results.
+<br/>
+
+```javascript
+  computed: {
+        filteredPosts() {
+           return this.posts.filter(post => {
+              return post.attributes.title.toLowerCase().includes(this.search.toLowerCase())
+           })
+        }
+     }
+```
+
+
+And one last thing, make sure your are binding the posts list to the *filteredPosts* computed property.  
+
+<img src="/blog-images/my-web-post/46_filterd.png" class="img-fluid" alt="search posts">
+
+Pretty easy, right?
+
+The fiter by tag functionality will be very similar but with one addition: I want to allow the user to select from a set of predefined tags, the ones I'm using in the posts.
+
+The first thing we need is a list of all the tags. We can get them from the posts, but as I plan to have an small number of tags, I'm going to hardcode them.
+
+```javascript
+data: function () {
       return {
-        show: false
+        search: '',
+        tagsES: ['uno', 'dos', 'tres'],
+        tagsEN: ['one', 'two', 'three'],
+        selectedTags:[],
       }
     },
+```
 
-    methods: {
-      toggleNavbar() {
-        this.show = !this.show;
-      }
-    }
-  }
+<br/>
+Let's now create some checkboxes to allow the user to select the tags. Here is the html code, using the checkboxes component form *vue-boostrap*.
+
+```html
+
+    <b-form-group label="Select by tag:">
+              <b-form-checkbox-group
+                id="tags-filter"
+                v-model="selectedTags"
+                :options="tagsEN"
+                name="tags"
+                v-on:change="clearSearch"
+              ></b-form-checkbox-group>
+     </b-form-group>
 
 ```
 
-<img src="/blog-images/my-web-post/40_reponsive_menu.png" class="img-fluid" alt="responsive menu">
 
-And the css:
+As we are allowing to filter by any of the two criteria (title —from the search box— or tags), we have to modify the *filteredPosts* compoun property and add a new data property to hold the selected tags.
 
-```css
-    .navbar-toggler-icon {
-        background-image: none!important;
-        margin: 1em;
-        width: 40px;
-        margin: 10px;
-        &::after, &::before, span{
-                background-color: #fff;
-                border-radius: 3px;
-                content: '';
-                display: block;
-                height: 2px;
-                margin: 7px 0;
-                transition: all .2s ease-in-out;
-      }
-      &.opened::before{
-        transform: translateY(9px) rotate(135deg);
-      }
-      &.opened::after{
-          transform: translateY(-9px) rotate(-135deg);
-      }
-      &.opened{
-        span {
-          transform: scale(0);
-        }
-      }
+```javascript
+data: function () {
+    return {
+      search: '',
+      tagsES: ['uno', 'dos', 'tres'],
+      tagsEN: ['one', 'two', 'three'],
+      selectedTags:[]
     }
-    .navbar-toggler{
-      border: none;
-      outline: none;
-      .navbar-toggler-icon{
-        color: $white!important;
-        &:hover {
-           color: $base-color!important;
-        }
-      }
-  }
+  },
+
+...
+
+computed: {
+    filteredPosts() {
+       const fromTagFilter = this.selectedTags.length > 0 ? true : false
+        return this.posts.filter(post => {
+              return  fromTagFilter ? post.attributes.tags.some(t => this.selectedTags.includes(t))
+              : post.attributes.title.toLowerCase().includes(this.search.toLowerCase())
+        })
+    }
+},
 
 ```
-It is pretty straigh forward, just notice that I'm creating the hamburguer menu via css and animating it.
 
-<img src="/blog-images/my-web-post/41_reponsive_nav.png" class="img-fluid" alt="nuxt boostrap responsive menu">
+The code is pretty straight forward, I'm using conditionally filtering by title or tag depending on what triggered the filter, the search box or the tags, what we know by checking if there are tags selected.
 
 
-I have made some adjustments to the home page style to make the nav bar and the header section look good on tablets and phones. Here is the code. I-m not going to go over it since there is nothing special in it. 
 
-```css
-/* pages/index.Vue /*
+Last, I want to make sure that one one filter is used the other one is reset. For that I'm adding a change event to the filters.
 
-/* MEDIA QUERIES */
-@media (max-width: 991.98px) {
-   #header {
-    padding-top: 100px;
-    & .inner-wrapper {
-      & .header-msg {
-        & .greeting {
-          font-size: 2.6rem;
-          line-height: 2.6rem;
+Those are the methods trigered by the change events:
 
-          .smaller {
-            font-size: 2.4rem;
-            line-height: 2.4rem;
-          }
-        }
+```javascript
+ methods: {
+      clearTags() {
+        this.selectedTags = [];
+      },
+      clearSearch() {
+        this.search ='';
+      },
 
-        & .message {
-          font-size: 1.5rem;
-          line-height: 1.7rem;
-          margin-top: 50px;
-        }
-      }
-    }
-  }
-
-  .wrap {
-    padding: 70px 10% 40px 10%;
-  }
-}
-
-@media (max-width: 600px) {
-  #header {
-    padding-top: 80px;
-    & .inner-wrapper {
-      padding: 10px 20px;
-      & .header-msg {
-        margin-bottom: 50px;
-        & .greeting {
-          font-size: 1.6rem;
-          line-height: 1.6rem;
-
-          .smaller {
-            font-size: 1.5rem;
-            line-height: 1.5rem;
-          }
-        }
-
-        & .message {
-          font-size: 1.1rem;
-          line-height: 1.2rem;
-          margin-top: 30px;
-        }
-
-        & .blob {
-          top: -40px;
-          left: -15px;
-          width: 120px;
-        }
-      }
     
     }
-  }
-
-  .wave-one > use {
-  animation: move-forever2 12s linear infinite;
-  &:nth-child(1) {
-    animation-delay: 3s;
-  }
-}
-
-.wave-two > use {
-  animation: move-forever4 18s linear infinite;
-  &:nth-child(1) {
-    animation-delay: -2s;
-  }
-}
-
-}
-
-```
-
-```css
-/* main.css */
-
-/* MEDIA QUERIES */
-@media (max-width: 500px) {
-   .btn {
-    margin-top: 20px;
-    padding: 20px 20px;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-  }
-}
 ```
 
 
-```css
-/* navbar.vue */
+<img src="/blog-images/my-web-post/48_static_site_nuxt.png" class="img-fluid" alt="search filter nuxt">
 
-/* MEDIA QUERIES */
- @media (max-width: 991.98px) {
-  .navbar{
-     padding:0!important;
-     font-size: 30px;
-     .navbar-collapse{
-       height: 100vh;
-       .main-items, .secondary-items{
-          text-align: center;
-       }
-
-       .main-items{
-          &::after {
-            content: " . ";
-            color: $white;
-
-        }
-        .nav-item:not(:last-child){
-            &::after {
-                  content: "";
-                }
-        }
-      }
-     }
-  }
-
- }
+This is what you should see:
+<img src="/blog-images/my-web-post/50.mardown-nuxt-blog.gif" class="img-fluid" alt="markdown nuxt blog">
 
 
-@media (max-width: 500px) {
- .navbar{
-     padding:0!important;
-     font-size: 20px;
- }
-}
-
-
-```
-
-Now, before adding to the next section to our home page, let's take care of the translation of the header section.
-
-Here there is one thing we should pay attention to. Some of the pieces of text we want to translate include html tags, like this one.
-
-<img src="/blog-images/my-web-post/42_localization_nuxt.png" class="img-fluid" alt="nuxt localization markdown blog">
-
-There are two things we can do:
-
-a) Create one translation for each piece of text and replace it in the vue file with the 
- ```{{ $t('header.greeting-hello') }}```  syntax as we have alrady done in the navbar.
-
-b) We can create larger pieces of translated code including some html tags, for example:
-     ``` " I code. <br> I design. <br> I solve problems. <br>" ```
-In that case, as we want to render html tags, we have to use a slightly different syntax using the *v-html* directive.
-
- ``` <span class="smaller" v-html="$t('header.greeting-do')"> ```
-
-
-Another problem you'll face when storing the translations in a json object is that you can not store strings in multiple lines, what can affect  long strings readability. 
-
-A trick you can use, is store your long strings as arrays.
-
-<img src="/blog-images/my-web-post/42_localizatrion_string.png" class="img-fluid" alt="json string in multiple lines">
-
-Then, as you need to render each of of the items of the array,  you can use something like this.
-
-```html
- <span v-html="$t('header.message[0]')"> </span>
- <span v-html="$t('header.message[1]')"> </span>
- <span v-html="$t('header.message[2]')"> </span>
-
-```
-One note about injecting styles from the localization file: as you can see, in the last item of the array, the text includes a class. When injecting html to an element using the *v-html* directive, the classes are not rendered if the style is scoped. 
-Keep this in mind and move the underline class to a not scoped style, for example to *main.css*.
-	
-
-Next, let´s create the rest of the sections of  the home page.
-I'm not using components for the home page sections because they are not reusable sections and there is not an excessive amount of code, so the number of lines of code in the template does not become excessive.
-There is nothing special here, just plain html and css, so I'm not going to explain anything. Feel free to check and use the code I have created.
-////LINK GITHUB
-
-Finally, let's add the links to the nav bar and fix the contact buttons.
-
-For the links, just regular same page links. Note here that I have added a click event to togle the navabar when we click on a menu item. This way the nav closes automatically after navigating too a clicked ink.
-
-```html
-         <ul class="navbar-nav mr-auto main-items">
-          <li class="nav-item active">
-             <nuxt-link :to="localePath('index')" class="nav-link">
-                  {{ $t('navbar.home') }}
-              </nuxt-link>
-          </li>
-          <li class="nav-item">
-            <a @click="toggleNavbar" class="nav-link" href="#me"> {{ $t('navbar.me') }}</a>
-          </li>
-          <li class="nav-item">
-            <a @click="toggleNavbar" class="nav-link" href="#services"> {{ $t('navbar.services') }}</a>
-          </li>
-          <li class="nav-item">
-            <a @click="toggleNavbar" class="nav-link" href="#portfolio"> {{ $t('navbar.portfolio') }}</a>
-          </li>
-          <li class="nav-item">
-            <a @click="toggleNavbar" class="nav-link" href="#contact"> {{ $t('navbar.contact') }}</a>
-          </li>
-        </ul>
-
-```
-
-And for he contact buttons, after many years using a contact form (which as a user, is not my favorite way to contact) I decided to do with a simple email link this time, a regular *mailto:* link with a little trick to reduce the number of spam messages I get.
-
-```html
- <a class="btn button--default" href="mailto:hxexlxlo@cxoxdexwxithsxonxia.com" 
-  onmouseover="this.href=this.href.replace(/x/g,'')">
-    {{ $t("header.button") }}
-  </a>
-
-```
-
-I have added some *x* to the email address to make it invalid and then, use an *onmouseover* event to remove the *x* and have my valid email address.
-
-
-I'm pretty happy with my home page. Let's now move to the blog and make it look nice. But this will be in the  [next part  of this article](vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-4).
-
-
+The tag filter and the search box functonality are done. If you want to add the style them as you can see in this blog, feel free to get the code from GitHub ///////
 
 -----
 
@@ -777,5 +457,5 @@ I'm pretty happy with my home page. Let's now move to the blog and make it look 
 
  <a href="https://www.netlify.com/" target="_blank">Netlify</a>
 
-<img src="/blog-images/my-web-post/blog-markdown-folder.png" class="img-fluid" alt="nuxt markdown blog">
+<img src="/blog-images/my-web-post/45_tags.png" class="img-fluid" alt="vue nuxt markdown">
 
