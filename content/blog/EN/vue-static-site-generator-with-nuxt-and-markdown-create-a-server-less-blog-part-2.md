@@ -366,6 +366,7 @@ As the *_slug* and the *LangSwitcher* components are not parent-child component,
 In a regular Vue app we'll place the event bus in *main.js*. With Nuxt, we need to create a plugin.
 
 ---
+
 ***A note about plugins***
 
 When we want to extend Vue/Nuxt functionality with external libraries/packages or our own functions, we can add them as plugins or as modules.
@@ -504,6 +505,9 @@ export default {
 You can now test it and see that you can change the language from a post blog.
 
 <img src="/blog-images/my-web-post/33_nuxt_localization.gif" class="img-fluid" alt="nuxt language switcher">
+
+
+In [Part 3](vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-3#local3) I talk about a coupe of things to consider when A couple of things to consider when injecting text from the locales. You might want to check it.
 
 
 **Let's recap:**

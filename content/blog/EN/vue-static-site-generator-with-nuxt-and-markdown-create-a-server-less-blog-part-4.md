@@ -1,9 +1,9 @@
 ---
-name: 'vue static site generator nuxt and markdown blog part 3'
-title: Vue Static Site Generator with Nuxt and Mardown. Let's Create a Serverless Blog. Part 3
-date: March 27 2020
-slug: 'vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-3'
-slugTrans: 'generador-de-sitios-estaticos-con-vue-nuxt-y-markdown-vamos-a-crear-un-blog-sin-servidor-parte-3'
+name: 'vue static site generator nuxt and markdown blog part 4'
+title: Vue Static Site Generator with Nuxt and Mardown. Let's Create a Serverless Blog. Part 4
+date: March 28 2020
+slug: 'vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-4'
+slugTrans: 'generador-de-sitios-estaticos-con-vue-nuxt-y-markdown-vamos-a-crear-un-blog-sin-servidor-parte-4'
 description:  This website you are visiting have been created using Nuxt and Markdown and is serving SEO-friendly blog posts without the need of a server. Want to learn how to do it? Keep reading...
 tags: ['vue', 'nuxt', 'static site generator']
 ---
@@ -18,7 +18,9 @@ In [Part 1 of this article](vue-static-site-generator-with-nuxt-and-markdown-cre
 
 In [Part 2 ](vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-2) we saw how to add internationalization to our static site —including the blog— using "Nuxt-i18n". 
 
-In this part, I'm going to create the home page of my site. What we have so far is basically the barebones of the page that Nuxt scaffolded for us. Let's make some changes!
+In [Part 3 ](vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-3) I show you how to create a home page like the one in this site
+
+In this part, I'm going to ad some style and structure to the blog section.
 
 
 
@@ -27,12 +29,11 @@ In part 3//////
 
 **Index**
 
-- [Initial Setup and Adding Google Fonts to a Nuxt Project](#initial)
-- [Adding Decorative Elements: Animated Waves and Blob](#animated)
-- [Improving thw Navigation Bar and the Language Switcher](#nav)
-- [Making it Look Good in Small Screens](#responsive)
-- [A Couple of Things to Consider When Injecting Text From the Locales](#locale)
-- [The contact button and other final touches](#final)
+- [Internationalization with Nuxt-i18n](#internationalization)
+- [Creating a Language Switcher](#switcher)
+  [Making The Blog Multilingual](#blog-locale)
+- [Brief Intro to Nuxt](#nuxt-intro)
+  - [Structure of a Nuxt Project](#structure)
 
 
 **Complete Project Code**: You can get the source code on <a href="https://github.com/nuxt-community/nuxt-i18n" target="_blank">GitHub </a>
@@ -40,9 +41,9 @@ In part 3//////
 **Prerequisits**: HTML, CSS, JavaScript, Vue.js, and Markdown.
 
 
-<a name="initial"></a>
+<a name="main-style"></a>
 
-## Initial Setup and Adding Google Fonts to a Nuxt Project
+## Initial Setup
 
 I have created some global styles in the styles folder. As this is not a CSS anf HTML tutorial, I'm not going to get into details, but feel free to get the code from the github repo. ////LINK
 
@@ -56,7 +57,6 @@ This is the code to add if you wanto to use th same fonts I do, which are *Monts
         href: 'https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Cutive+Mono|Montserrat&display=swap'
       }
 ```
-
 <img src="/blog-images/my-web-post/35_fonts.png" class="img-fluid" alt="nuxt google fonts">
 
 The *head* property is used  to add external resources to the HTML *head* tags.
@@ -67,11 +67,6 @@ If you inspect your app with DevTools you will see the link to *GoogleFonts* in 
 Now you can use the fonts as usual. I have added the font-family property to the *body* and *html* elements in *main.sccs*.
 
 <img src="/blog-images/my-web-post/fonts.png" class="img-fluid" alt="static site generator nuxt">
-
-
-<a name="animated"></a>
-
-## Adding decorative elements: animated waves and blob
 
 Our home page is in *pages/index.vue*, as you might remember.
 
@@ -203,7 +198,6 @@ You can download the .svg file or, as I have done, inspect the page and copy the
 
 Add the blob to the template
 
-
 ```html
 <template>
 <svg class="svg-blob"  viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
@@ -220,9 +214,7 @@ Add the blob to the template
 </svg>
 </template>
 ```
-
 And create the corresponding css.
-
 
 ```css
  @import '../assets/styles/main.scss';
@@ -250,8 +242,11 @@ And create the corresponding css.
  ```
 
 
+
 Now, our blob component is ready and we can add it to any of our pages or components.
 Lets' add it to the home page header element, along with some styling.
+
+
 
 
 ```html
@@ -310,14 +305,8 @@ Lets' add it to the home page header element, along with some styling.
 }
 
 }
-
 ```
-
-
-<a name="nav"></a>
-
-## Improving thw Navigation Bar and the Language Switcher
-
+ 
 You might be wondering 'What about the translated text for the Spanish language?'. Well' I'm going to use the locale files for that, but first I want to focus only in the design.
 
 Before moving to the rest of the home page sections, let's fix the navigation bar and the language switcher.
@@ -328,7 +317,6 @@ First thing will be making the nav bar fixed on scroll. For that, in the NavBar 
 
 
 We'll come back later to the nav bar to add the links. Next thing I wan t to do is to move the language switcher to the navigation bar. Now we have it in the default layout, so let's remove it form there and place it in the the NavBar component, but first we need to import it and register.
-
 
 ```html
 <template>
@@ -423,8 +411,6 @@ And some style:
 
 
 ```
-
-
 I have also added some style to the language switcher.
 
 ```html
@@ -548,18 +534,12 @@ And the css:
   }
 
 ```
-
 It is pretty straigh forward, just notice that I'm creating the hamburguer menu via css and animating it.
 
 <img src="/blog-images/my-web-post/41_reponsive_nav.png" class="img-fluid" alt="nuxt boostrap responsive menu">
 
 
-<a name="responsive"></a>
-
-## Making it look good in small screens
-
-I have made some adjustments to the home page style to make the nav bar and the header section look good on tablets and phones. Here is the code. I'm not going to go over it since there is nothing special in it. 
-
+I have made some adjustments to the home page style to make the nav bar and the header section look good on tablets and phones. Here is the code. I-m not going to go over it since there is nothing special in it. 
 
 ```css
 /* pages/index.Vue /*
@@ -645,8 +625,6 @@ I have made some adjustments to the home page style to make the nav bar and the 
 
 ```
 
-
-
 ```css
 /* main.css */
 
@@ -661,7 +639,6 @@ I have made some adjustments to the home page style to make the nav bar and the 
   }
 }
 ```
-
 
 
 ```css
@@ -706,12 +683,7 @@ I have made some adjustments to the home page style to make the nav bar and the 
 
 ```
 
-
-<a name="locale"></a>
-
-## A couple of things to consider when injecting text from the locales
-
-Now, before adding the rest of the section to our home page, let's take care of the translation of the header section.
+Now, before adding to the next section to our home page, let's take care of the translation of the header section.
 
 Here there is one thing we should pay attention to. Some of the pieces of text we want to translate include html tags, like this one.
 
@@ -722,8 +694,11 @@ There are two things we can do:
 a) Create one translation for each piece of text and replace it in the vue file with the 
  ```{{ $t('header.greeting-hello') }}```  syntax as we have alrady done in the navbar.
 
-b) We can create larger pieces of translated code including some html tags, for example: ``` " I code. <br> I design. <br> I solve problems. <br>" ```
-In that case, as we want to render html tags, we have to use a slightly different syntax using the *v-html* directive. ``` <span class="smaller" v-html="$t('header.greeting-do')"> ```
+b) We can create larger pieces of translated code including some html tags, for example:
+     ``` " I code. <br> I design. <br> I solve problems. <br>" ```
+In that case, as we want to render html tags, we have to use a slightly different syntax using the *v-html* directive.
+
+ ``` <span class="smaller" v-html="$t('header.greeting-do')"> ```
 
 
 Another problem you'll face when storing the translations in a json object is that you can not store strings in multiple lines, what can affect  long strings readability. 
@@ -740,14 +715,9 @@ Then, as you need to render each of of the items of the array,  you can use some
  <span v-html="$t('header.message[2]')"> </span>
 
 ```
-
 One note about injecting styles from the localization file: as you can see, in the last item of the array, the text includes a class. When injecting html to an element using the *v-html* directive, the classes are not rendered if the style is scoped. 
 Keep this in mind and move the underline class to a not scoped style, for example to *main.css*.
 	
-
-<a name="final"></a>
-
-## The contact button and other final touches
 
 Next, let´s create the rest of the sections of  the home page.
 I'm not using components for the home page sections because they are not reusable sections and there is not an excessive amount of code, so the number of lines of code in the template does not become excessive.
@@ -781,7 +751,6 @@ For the links, just regular same page links. Note here that I have added a click
 
 ```
 
-
 And for he contact buttons, after many years using a contact form (which as a user, is not my favorite way to contact) I decided to do with a simple email link this time, a regular *mailto:* link with a little trick to reduce the number of spam messages I get.
 
 ```html
@@ -791,7 +760,6 @@ And for he contact buttons, after many years using a contact form (which as a us
   </a>
 
 ```
-
 
 I have added some *x* to the email address to make it invalid and then, use an *onmouseover* event to remove the *x* and have my valid email address.
 
