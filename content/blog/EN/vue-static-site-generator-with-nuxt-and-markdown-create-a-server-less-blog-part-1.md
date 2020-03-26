@@ -901,9 +901,12 @@ This is the piece of code containing some *console.logs* that I'll use to help m
        console.log("*****postsContent(key) " + JSON.stringify(postsContent(key)));
        return postsContent(key);
       });
+
+      //sort the posts by date
+      const sortedPosts = imports.sort((a, b) => (a.date > b.date) ? 1 : -1)
       console.log( imports);
       return {
-        posts: imports
+        posts:sortedPosts
       }
     },
   }

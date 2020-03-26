@@ -29,11 +29,10 @@ In part 3//////
 
 **Index**
 
-- [Internationalization with Nuxt-i18n](#internationalization)
-- [Creating a Language Switcher](#switcher)
-  [Making The Blog Multilingual](#blog-locale)
-- [Brief Intro to Nuxt](#nuxt-intro)
-- [Structure of a Nuxt Project](#structure)
+- [A secondary layout for the blog](#layout)
+- [Adding a Sigup form to the Footer - Adding External JavaScript Code to a Nuxt Template](#signup)
+- [The Blog's Index Page - Adding a Filter and a Search Box](#index)
+- [The Blog's Posts- Syntax Highlighting With Nuxt and Markdown](#posts)
 
 
 **Complete Project Code**: You can get the source code on <a href="https://github.com/nuxt-community/nuxt-i18n" target="_blank">GitHub </a>
@@ -57,13 +56,11 @@ This is the code. I'm importing and registering the components I want to add to 
 
 ```html
 <template>
-  <div>
-    <Navbar/>
-
-    <nuxt/>
-
-    <Footer/>
-  </div>
+<div>
+<Navbar/>
+<nuxt/>
+<Footer/>
+</div>
 </template>
 
 
@@ -96,9 +93,9 @@ For that just use the *layout*  property set to the name of the blog layout in t
 <img src="/blog-images/my-web-post/43_layout.png" class="img-fluid" alt="nuxt markdown blog">
 <br>  
 
-<a name="main-style"></a>
+<a name="signup"></a>
 
-## Adding an opt-in to the footer - Programatically adding a piece of javaScript code to a Nuxt template
+## Adding a Sigup form to the Footer - Adding external javaScript code to a Nuxt template
 
 I want to add an Aweber signup form to my blog. I'm going to do it in the footer.
 
@@ -309,7 +306,7 @@ Add any needed css and you are done.
 
 <a name="index"></a>
 
-## The blog's index page. Adding a filter and a search box
+## The blog's index page - Adding a filter and a search box
 
 Here I want to show the post's list and a way to filtering them by tag. I'm not going to create a side bar or categories or anything like that: just a post list, a search box(to searc by title) and a filter to filter by tag.
 
@@ -324,7 +321,6 @@ Now, we can show the post's tags.
 
 Let's create the search  by title functionality.
 
-### Search by title functionality
 
 First thing we need is the search box:
 
@@ -448,6 +444,107 @@ This is what you should see:
 
 The tag filter and the search box functonality are done. If you want to add the style them as you can see in this blog, feel free to get the code from GitHub ///////
 
+
+<a name="posts"></a>
+
+## The Blog's Posts- Syntax Highlighting With Nuxt and Markdown
+
+There is nothing special in how I styted the post's pages. As always, you can get the code form the GitHub repo /////
+
+There is just one thing I want to talk about, and it how to highlight code when using Markdown. It is very difficult to me readiing code that has not been syntax-highlighted. This is why finding a way to render the pieces of code in my posts in what for me it a propeer way was crucial.
+
+After doing some research I decided to go with 
+ <a href="https://prismjs.com/" target="_blank">Prismjs</a> and <a href="https://github.com/markdown-it/markdown-it" target="_blank">Markdown-it</a>
+
+ 
+
+
+*Markdown-it* is a Markdown parser which converts markdown text to HTML and allows us to easily adds syntax extensions & sugar (like code highlighing), actually it is the default parser that Frontmatter uses. So we don’t have to add it. (You can read more <a href="https://hmsk.github.io/frontmatter-markdown-loader/options.html" target="_blank">here</a>)
+
+We have to install Prismjs, though
+
+```npm install prismjs```
+
+PrismaJs es the actual syntax highlighter.
+
+Let's open *_slug.vue* and make the required changes to be able to use Markdown-it and Prismjs.
+
+Let's stat by loading Mardown-it using *require()*, to which we'll pass a configuration object. For more info about the configutaion options, you can visit the  <a href="https://markdown-it.github.io/markdown-it/" target="_blank">Markdown-it page</a>
+
+```javascrip
+
+  const md = require('markdown-it')({
+    html: true,
+    linkify: true,
+    typographer: true
+  })
+```
+
+Then, in the asyncData() method, we need to replace the content property in the return object with the code below, where we apply the *render()* method provided by markdowit to render the markdown string into html.
+
+
+```javascript
+ content: md.render(postContent.html)
+``` 
+
+<img src="/blog-images/syntax-highlight-nuxt.png" class="img-fluid" alt="syntax hightlight nuxt markdown">
+
+
+Last thing we have to do is to setup prism.js.
+To do it, create a prism.js plugin, which only needs to import and export prism to make it available in our app, and import any prism theme you want to use to style the highlighing
+
+```javascript
+import Prism from 'prismjs'
+import 'prismjs/themes/prism-tomorrow.css' // Or whatever theme you like. Find more in prism website
+
+export default Prism
+
+```
+
+ Register it in nuxt.config.js
+
+```javascript
+  plugins: [
+    ...
+    '~/plugins/prism'
+  ],
+```
+
+
+And we are ready to use it in our _slug.vue file.
+
+Import it.
+
+```javascript
+import Prism from '../../plugins/prism';
+```
+
+And add the *Prism.highlightAll()* method to the *mounted()* hook.
+
+```javascript
+
+  mounted() {
+    Prism.highlightAll()
+  }
+```
+
+Now to highlight code in your Markdown files, use 
+
+``` 
+code here
+```
+
+or if you want to apply the highlighting specially defined by the theme for a specific languge: 
+
+```language
+
+code here
+
+```
+
+<img src="/blog-images/my-web-post/markdown-code-highlight.png" class="img-fluid" alt="markdown code hightlight">
+
+
 -----
 
 
@@ -455,7 +552,7 @@ The tag filter and the search box functonality are done. If you want to add the 
 
 
 
- <a href="https://www.netlify.com/" target="_blank">Netlify</a>
+ 
 
 <img src="/blog-images/my-web-post/45_tags.png" class="img-fluid" alt="vue nuxt markdown">
 

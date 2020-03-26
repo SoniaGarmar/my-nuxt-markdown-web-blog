@@ -81,7 +81,7 @@
             date: attr.date,
             description: attr.description,
            // content: postContent.html,
-  content: md.render(postContent.html),
+            content: md.render(postContent.html),
             slugTrans: attr.slugTrans
           }
       } catch(err) {
