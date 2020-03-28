@@ -103,18 +103,28 @@
               </div>     
            </div>                 
          </div>
+
+         <pagination
+            :max-buttons="3"
+            :total-items="totalItems"
+            :items-per-page="perPage"
+            :current-page="currentPage"
+            @pagebuttonclicked="onPageButtonClicked"
+          />
        </div>
     </div>
 </template>
 
 <script>
   import Blob from "~/components/Blob.vue";
+  import Pagination from "~/components/Pagination.vue";
 
   export default {
     layout: 'blog',
 
     components: {
-      Blob
+      Blob,
+      Pagination,
     },
 
     data: function () {
@@ -124,7 +134,10 @@
         tagsEN: ['one', 'two', 'three'],
         selectedTags:[],
         searching: false,
-        filtering: false
+        filtering: false,
+        currentPage: 1,
+        perPage: 2,
+
       }
     },
 
@@ -142,7 +155,7 @@
 
         // require.context does not returns tehe content of the
         // modules(the md files) directly.
-        //It returns a function to which we can require.
+        // It returns a function to which we can require.
         // It provides a keys() method to retrieving the contents of the context.
 
         const imports = postsContent.keys().map((key) => {
@@ -163,7 +176,7 @@
         const sortedPosts = imports.sort((a, b) => (a.date > b.date) ? 1 : -1)
 
 
-         // console.log( imports);
+          //console.log( sortedPosts);
 
         return {
           posts:sortedPosts
@@ -174,12 +187,24 @@
     computed: {
         filteredPosts() {
            const fromTagFilter = this.selectedTags.length > 0 ? true : false
-           return this.posts.filter(post => {
-              return  fromTagFilter ? post.attributes.tags.some(t => this.selectedTags.includes(t))
+           const filtered = this.posts.filter(post => {
+              return fromTagFilter ? post.attributes.tags.some(t => this.selectedTags.includes(t))
               : post.attributes.title.toLowerCase().includes(this.search.toLowerCase())
            })
-        }
+
+           this.totalItems = filtered.length;
+
+
+           //paginate
+           let from = (this.currentPage * this.perPage) - this.perPage;
+           let to = (this.currentPage * this.perPage);
+           return  filtered.slice(from, to)
+        },
     },
+
+
+
+
 
     methods: {
       clearTags() {
@@ -202,7 +227,12 @@
       onFilterClose(){
        this.filtering = false;
        this.selectedTags = [];
-      }
+      },
+       onPageButtonClicked(pageButton) {
+       this.currentPage = pageButton;
+     },
+
+
     }
 
 

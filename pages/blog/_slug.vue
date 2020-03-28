@@ -71,7 +71,7 @@
         // that object has a "attributes" property that stores an object with all the attributes defined in th markdown file
         const attr = postContent.attributes;
 
- //let res = fm(postContent.default)
+        //let res = fm(postContent.default)
         // inspect what we get in the console
         // This is want we want to make available in our template
          return {

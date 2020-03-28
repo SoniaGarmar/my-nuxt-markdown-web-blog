@@ -545,14 +545,406 @@ code here
 <img src="/blog-images/my-web-post/markdown-code-highlight.png" class="img-fluid" alt="markdown code hightlight">
 
 
------
+
+## Adding pagination to our blog
+
+If your blog has a lot of content, you might want to add pagination to the blog's index page. I don't need it yet because I have very few posts in my blog, but as I plan to keep adding content , I'm going to create a pagination component and have it ready to be used when I need it.
+
+You can add the pagination functionality directly in the blog's home page; however, I  preffer to create a component so that I will be able to reuse it if I need to add pagination to other pages in the future.
+
+The goal is to have something like this:
+
+<img src="/blog-images/my-web-post/pagination-component-nuxt.png" class="img-fluid" alt="vue nuxt markdown">
+
+Let's do it.
+
+The number of buttons will be the total number of posts divided by the posts we want to show per page.
+Those two variables, along with the current pages are going to be passed from the parent component  where we place the Pagination component.
+
+So, lets' create the component and  define those props:
+
+```javascript
+<script>
+export default {
+props: {
+    itemsPerPage: {
+      type: Number,
+      required: false,
+      default: 10
+    },
+    totalItems: {
+      type: Number,
+      required: true
+    },
+    currentPage: {
+      type: Number,
+      required: true
+    }
+  },
+
+}
+</script>
+```
 
 
 
+And let's also create a computed property to calculate the total number of pages
+
+```javascript
+computed: {
+    totalPages(){
+      return this.totalItems/this.itemsPerPage
+    },
+}
+```
+
+This value will be the total number of page buttons that will appear in the pagination component, but we might want to limit the number of button to a smaller number, let's say 3.
+For that let's create another prop *maxButtons*.
+
+<br/>
+
+```javascript
+ maxButtons: {
+    type: Number,
+    required: false,
+    default: 10
+}
+```
+<br/>
+
+To render the pagination buttons, we'll use a computed property that returns an array containing all the buttons.  To create that array we will use a *for* loop that will add the buttons to the array. 
+The text for each one of those buttons will be the page number, which will be created with the for loop's counter (i)
+This counter initial value will depend on the current page. It will be:
+- 1 if the currrent page is the first one, 
+- the value of the total number of pages - the maximum number of buttons we want to show if we are at the last page
+- the current page value - 1 for the rest of pages. 
 
 
+Let's first create a computed property to calculate the value of the first page button:
 
- 
+```javascript
+   firstPageButton() {
+      return this.currentPage === 1 ? 1
+       : this.currentPage === this.totalPages ?
+         this.totalPages - this.maxButtons : this.currentPage - 1;
+    }
+```
+<br/>
+And then, the *for* loop to create the array of buttons. We want the number of buttons to be not larger than the max number of buttons we want to show and not larger than the total number of pages. Let's keep this is mind when creating the for loop
 
-<img src="/blog-images/my-web-post/45_tags.png" class="img-fluid" alt="vue nuxt markdown">
+```javascript
+   pageButtons() {
+      const buttons = [];
+      for (let i = this.firstPageButton; i <= Math.min(this.firstPageButton + this.maxButtons - 1, this.totalPages); i+= 1 ) {
+        buttons.push({
+          text: i,
+        });
+      }
+      return buttons;
+    }
+```
+
+now, the html to show the buttons:
+
+```html
+<template>
+  <ul>
+    <li>
+      <button>
+        <font-awesome-icon :icon="['fas', 'angle-double-left']"/>
+      </button>
+    </li>
+    <li>
+      <button
+      >
+         <font-awesome-icon :icon="['fas', 'angle-left']"/>
+      </button>
+    </li>
+    <li v-for="button in pageButtons" :key="button.text">
+      <button>
+        {{ button.text }}
+      </button>
+    </li>
+    <li>
+      <button>
+        <font-awesome-icon :icon="['fas', 'angle-right']"/>
+      </button>
+    </li>
+    <li>
+      <button>
+        <font-awesome-icon :icon="['fas', 'angle-double-right']"/>
+      </button>
+    </li>
+  </ul>
+</template>
+```
+<br/>
+
+I want to disable the button that corresponds to the current page, so let's add the *disabled* attribute to the buttons and bind it to a property that will set it to true or false. We'll add this property to the button object when creating it in the *pageButtons()* computed prop.
+
+```javascrip
+  buttons.push({
+    text: i,
+    isDisabled: i === this.currentPage
+  });
+```
+<br/>
+
+This is for the numbered buttons. Now, for the *<<* and *<* buttons, we want to disable them if the current page is the fist one. Let's create a computed property to do so, and bind the *disabled* attribute to it.
+
+```javascript
+   isFirstPage() {
+      return this.currentPage === 1;
+    }
+```
+
+```html
+ <li>
+     <button
+        @click="onClickFirstPage"
+         :disabled="isFirstPage"
+      >
+        <font-awesome-icon :icon="['fas', 'angle-double-left']"/>
+      </button>
+    </li>
+    <li>
+      <button
+        @click="onClickPreviousPage"
+        :disabled="isFirstPage"
+      >
+         <font-awesome-icon :icon="['fas', 'angle-left']"/>
+      </button>
+    </li>
+```
+
+<br/>
+
+And the same for the last and next buttons.
+
+```javascript
+ isLastPage() {
+      return this.currentPage === this.totalPages;
+  }
+```
+<br/>
+
+```html
+
+ <li>
+      <button
+        @click="onClickNextPage"
+         :disabled="isLastPage"
+      >
+        <font-awesome-icon :icon="['fas', 'angle-right']"/>
+      </button>
+    </li>
+
+    <li>
+      <button
+        @click="onClickLastPage"
+         :disabled="isLastPage"
+      >
+        <font-awesome-icon :icon="['fas', 'angle-double-right']"/>
+      </button>
+    </li>
+
+```
+
+<br/>
+
+Now we need to add functionality to the buttons. What will happen when we click on them?
+
+We have to emit an event to tell the parent component that the button to show a certain page's items has been clicked. We'll do so by adding a *on click* directive to the buttons to fire the corresponding methods.
+
+Let's create those methods:
+
+```javascript
+ methods: {
+    onClickFirstPage() {
+      this.$emit('pagebuttonclicked', 1);
+    },
+
+    onClickPreviousPage() {
+      this.$emit('pagebuttonclicked', this.currentPage - 1);
+    },
+
+    onClickMiddlePage(pageButton) {
+      this.$emit('pagebuttonclicked', pageButton);
+    },
+
+    onClickNextPage() {
+      this.$emit('pagebuttonclicked', this.currentPage + 1);
+    },
+
+    onClickLastPage() {
+      this.$emit('pagebuttonclicked', this.totalPages);
+    }
+  }
+```
+<br/>
+
+We are emitting an event (*pagebuttonclicked*) and passing in the button that has been clicked.
+
+Let's add the event to the buttons:
+
+```html
+<ul id="pagination">
+    <li>
+      <button
+        @click="onClickFirstPage"
+         :disabled="isFirstPage"
+      >
+        <font-awesome-icon :icon="['fas', 'angle-double-left']"/>
+      </button>
+    </li>
+
+    <li>
+      <button
+        @click="onClickPreviousPage"
+        :disabled="isFirstPage"
+      >
+         <font-awesome-icon :icon="['fas', 'angle-left']"/>
+      </button>
+    </li>
+
+    <li v-for="button in pageButtons" :key="button.text">
+      <button
+        @click="onClickMiddlePage(button.text)"
+         :disabled="button.isDisabled"
+      >
+        {{ button.text }}
+      </button>
+    </li>
+
+    <li>
+      <button
+        @click="onClickNextPage"
+         :disabled="isLastPage"
+      >
+        <font-awesome-icon :icon="['fas', 'angle-right']"/>
+      </button>
+    </li>
+
+    <li>
+      <button
+        @click="onClickLastPage"
+         :disabled="isLastPage"
+      >
+        <font-awesome-icon :icon="['fas', 'angle-double-right']"/>
+      </button>
+    </li>
+  </ul>
+  ```
+<br/>
+
+And that's it. We have created our pagination component. You might want to add some style:
+
+```css
+
+<style lang="scss">
+@import "../assets/styles/main.scss";
+#pagination {
+  list-style-type: none;
+  margin: 60px 0;
+  text-align: center;
+  li{
+      display: inline-block;
+      margin:0;
+      button {
+        background: $white;
+        border: none;
+        color: $grey-dark;
+        &:disabled {
+           opacity: 0.6;
+        }
+      }
+      }
+}
+</style>
+```
+
+<br/>
+
+Now, our pagination component is ready to be used in out blog's index page. Let's do it:
+
+```html
+ <pagination
+  :max-buttons="3"
+  :total-items="totalItems"
+  :items-per-page="perPage"
+  :current-page="currentPage"
+  @pagebuttonclicked="onPageButtonClicked"
+/>
+```
+<br/>
+Remember to import and register the Pagination component:
+
+```javascript
+  import Pagination from "~/components/Pagination.vue";
+  export default {
+    layout: 'blog',
+    components: {
+      Blob,
+      Pagination,
+    },
+}
+
+```
+<br/>
+When the user clicks a button in the component, two different things happen:
+- We pass the required values to create the paginataion component(max-number of buttons, the total items, and the current page)
+
+- The *pagebuttonclicked* event is emitted and, as we are listening to it in the parent component, when it is fired, we are notified telling us which button has been clicked.
+And we respond to that event triggering the 
+*onPageButtonClicked()* method, which sets the vale of the current page property in blog's index page. So we are ready to do the corresponding filtering to show only the pots that belong to that page.
+
+Let's define the *totalItems*, *perPage*, and *currentPage* properties, and create the *onPageButtonClicked()* method.
+
+
+```javascript
+ data: function () {
+      return {
+       ...
+        currentPage: 1,
+        perPage: 2,
+
+      }
+```
+the value of the *totalItems* property will be set after we have filtered the posts, in the *filteredPosts()* computed property.
+
+```javascript
+   computed: {
+        filteredPosts() {
+           const fromTagFilter = this.selectedTags.length > 0 ? true : false
+           const filtered = this.posts.filter(post => {
+              return fromTagFilter ? post.attributes.tags.some(t => this.selectedTags.includes(t))
+              : post.attributes.title.toLowerCase().includes(this.search.toLowerCase())
+           })
+
+           this.totalItems = filtered.length;  //HERE
+        },
+    },
+```
+<br/>
+
+And one last thing: slicing the array of filtered posts to show only the ones that correspond to the current page. We'll do it in the *filteredPosts()* computed property:
+
+```javascript
+  computed: {
+    filteredPosts() {
+      ...
+
+        //paginate
+        let from = (this.currentPage * this.perPage) - this.perPage;
+        let to = (this.currentPage * this.perPage);
+        return  filtered.slice(from, to)
+    },
+},
+
+```
+<br/>
+
+And here is the final result:
+
+<img src="/blog-images/my-web-post/blog-pagination-vue.gif" class="img-fluid" alt="vue nuxt blog pagination">
 
