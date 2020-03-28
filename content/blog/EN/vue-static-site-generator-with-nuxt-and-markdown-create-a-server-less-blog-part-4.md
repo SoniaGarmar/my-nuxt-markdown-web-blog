@@ -102,8 +102,9 @@ I want to add an Aweber signup form to my blog. I'm going to do it in the footer
 The code provided by Aweber has html and javascript. The problem is that you cannot create (```<script> ...... </script>```) tags into the template. If you try to do so you will get an error similat to "Templates should only be responsible for mapping the state to the UI. Avoid placing tags with side-effects in your templates, such as script, as they will not be parsed". The solution is to add the *script* tags containing the Aweber's js programatically.
 
 You can use the same (or a similar) method to add forms from other providers or anytime you need to add external javascript to your templates.
-A quick note: If you just have to add external javascript globally to your site, you have the option of adding the (```<script> ...... </script>```)
-to the head of the index.html file by adding it to the head property of the nuxt.config file. 
+
+A quick note: If you just have to add external javascript globally to your site, you have the option of adding the *script* tags to the head of the *index.html* file by adding it to the *head* property of the *nuxt.config.json* file.
+
 
 Something like this:
 
@@ -115,7 +116,9 @@ script: [
 }
 ```
 <br/>
-Or you can also save the code in an external javascript file and reference it in the  nuxt.config file.
+
+You can also save the code in an external js file and reference it in the *nuxt.config.json* file.
+
 <br/>
 
 ```javascript
@@ -947,4 +950,6 @@ And one last thing: slicing the array of filtered posts to show only the ones th
 And here is the final result:
 
 <img src="/blog-images/my-web-post/blog-pagination-vue.gif" class="img-fluid" alt="vue nuxt blog pagination">
+
+And the only remaining thing is to build the production files and deploy them to Netlify. Let's see how to doit in [Part 5](vue-static-site-generator-with-nuxt-and-markdown-create-a-server-less-blog-part-5)
 

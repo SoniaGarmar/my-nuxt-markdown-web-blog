@@ -1,5 +1,32 @@
 const path = require('path');
+const fs = require('fs')
 const { i18nOptions } = require('./locales/nuxt-i18n-config');
+
+const getDynamicRoutes = function() {
+  const postsDirEN = path.join(__dirname, '/content/blog/EN');
+  const postsFilesEN = fs.readdirSync(postsDirEN);
+
+  const postsDirES = path.join(__dirname, '/content/blog/ES')
+  const postsFilesES = fs.readdirSync(postsDirES)
+
+   // map the contentFiles to get an array of objects instead of an array od string,
+   // which is provided by fs.readdirSync(contentDir)
+   const routesEN = postsFilesEN.map(filename => {
+    return {
+      route: `/blog/${path.basename(filename, '.md')}`,
+      //payload: fs.readFileSync(path.join(postsDir, filename))
+    }
+  });
+
+  const routesES = postsFilesES.map(filename => {
+    return {
+      route: `es/blog/${path.basename(filename, '.md')}`,
+    }
+  });
+
+  return routesEN.concat(routesES);
+
+}
 
 export default {
   mode: 'universal',
@@ -56,6 +83,7 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
 
+
     ['nuxt-fontawesome', {
      // component: 'fa',
       imports: [
@@ -72,9 +100,16 @@ export default {
     }],
 
     ['nuxt-i18n', i18nOptions],
+
+
    // ['@nuxtjs/markdownit', { linkify: true }]
 
   ],
+
+  // bootstrapVue: {
+  //   bootstrapCSS: false, // Or `css: false`
+  //   bootstrapVueCSS: false // Or `bvCSS: false`
+  // },
   /*
   ** Build configuration
   */
@@ -91,5 +126,9 @@ export default {
         }
       );
     }
-  }
+  },
+
+  generate: {
+    routes: getDynamicRoutes()
+  },
 }

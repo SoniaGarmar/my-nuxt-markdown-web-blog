@@ -10,7 +10,7 @@
 
 
 <script>
-  import Navbar from '@/components/NavbarBlog'
+  import Navbar from '@/components/NavBarBlog'
   import Footer from '@/components/FooterBlog'
   export default {
 

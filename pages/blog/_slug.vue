@@ -279,6 +279,14 @@
 
   #post.container-fluid{
     padding: 60px 15px;
+
+       /deep/ h2{
+        font-size: 1.6rem;
+    }
+
+    /deep/  p{
+     font-size: 18px;
+    }
   }
 
   .wrap {
@@ -327,6 +335,11 @@
         }
       }
     }
+
+
+
+
+
 }
 
 
