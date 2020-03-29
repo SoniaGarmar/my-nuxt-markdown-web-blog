@@ -21,7 +21,7 @@
           </p>
 
           <div class="d-flex justify-content-center bottom-box">
-            <a class="btn button--default" href="mailto:sxxxoxxnxia@xxsoxnixxxagxarcxia.dev" onmouseover="this.href=this.href.replace(/x/g,'')">
+            <a class="btn button--default" href="mailto:yoxxxrexxxmail@xxwxxhaxxxtevxxer.dev" onmouseover="this.href=this.href.replace(/x/g,'')">
                 {{ $t("header.button") }}
             </a>
           </div>
@@ -105,7 +105,7 @@
         </p>
 
         <div class="d-flex justify-content-center bottom-box">
-               <a class="btn button--default" href="mailto:sxxxoxxnxia@xxsoxnixxxagxarcxia.dev"  onmouseover="this.href=this.href.replace(/x/g,'')">
+               <a class="btn button--default"  href="mailto:yoxxxrexxxmail@xxwxxhaxxxtevxxer.dev" onmouseover="this.href=this.href.replace(/x/g,'')">
                 {{ $t("header.button") }}
             </a>
         </div>
@@ -220,7 +220,7 @@
         <div class="margin-md">
           <p class="underline" v-html="$t('workWith[5]')"><p>
             <div class="d-flex justify-content-center bottom-box">
-                <a class="btn button--default" href="mailto:sxxxoxxnxia@xxsoxnixxxagxarcxia.dev"  onmouseover="this.href=this.href.replace(/x/g,'')">
+                <a class="btn button--default"  href="mailto:yoxxxrexxxmail@xxwxxhaxxxtevxxer.dev"  onmouseover="this.href=this.href.replace(/x/g,'')">
                  {{$t('workWithCTA')}}
                 </a>
             </div>
@@ -314,7 +314,7 @@
             </p>
 
             <div class="d-flex justify-content-center bottom-box">
-             <a class="btn button--default" href="mailto:sxxxoxxnxia@xxsoxnixxxagxarcxia.dev"  onmouseover="this.href=this.href.replace(/x/g,'')">
+             <a class="btn button--default"  href="mailto:yoxxxrexxxmail@xxwxxhaxxxtevxxer.dev" onmouseover="this.href=this.href.replace(/x/g,'')">
                 {{ $t("contact.button") }}
              </a>
             </div>

@@ -1,6 +1,6 @@
 # sonia-web
 
-> My splendiferous Nuxt.js project
+> A server less blog build with Nuxt and Markdown
 
 ## Build Setup
 
