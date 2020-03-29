@@ -37,7 +37,17 @@
               </nuxt-link>
           </li>
 
-          <li class="nav-item">
+
+           <li class="nav-item">
+
+            <a class="nav-link waves-effect waves-light"
+              href="https://twitter.com/SoniaGarmar" target="_blank">
+             <font-awesome-icon :icon="['fab', 'twitter']"/>
+            </a>
+
+          </li>
+
+          <!-- <li class="nav-item">
             <a class="nav-link waves-effect waves-light">
               <font-awesome-icon :icon="['fab', 'linkedin']"/>
             </a>
@@ -53,7 +63,7 @@
             <a class="nav-link waves-effect waves-light">
              <font-awesome-icon :icon="['fab', 'twitter']"/>
             </a>
-          </li>
+          </li> -->
         </ul>
 
         <LangSwitcher/>
